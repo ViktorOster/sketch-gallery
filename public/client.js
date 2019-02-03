@@ -310,10 +310,12 @@ document.querySelector("#button-clear-drawing").addEventListener("click", functi
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
 });
-
+let imagesData = [];
 function putImage() {
-               
+  //save dataUrl in flat file system???
   let myImage = canvas.toDataURL("image/png");  
+  imagesData.push(myImage);
+  console.log(myImage);
   let img = document.createElement("img");
   img.style.width = "266px";
   img.style.height = "175px";

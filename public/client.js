@@ -287,3 +287,16 @@ var onPaint = function() {
   ctxShapes.lineTo(mouse.x, mouse.y);
   ctxShapes.stroke();
 };
+let drawingsPage = document.querySelector("#drawings-page");
+let drawPage = document.querySelector("#draw-page");
+
+let buttonWall = document.querySelector("#button-wall");
+let buttonDraw= document.querySelector("#button-draw");
+buttonWall.addEventListener("click", function() {
+  drawingsPage.style.display = "inline";
+  drawPage.style.display ="none";
+});
+buttonDraw.addEventListener("click", function() {
+  drawPage.style.display ="inline";
+  drawingsPage.style.display ="none";
+});

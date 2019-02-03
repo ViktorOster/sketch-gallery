@@ -306,6 +306,8 @@ document.querySelector("#button-add-drawing").addEventListener("click", function
   putImage();
 });
 document.querySelector("#button-clear-drawing").addEventListener("click", function() {
+  ctxShapes.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   
 });
 

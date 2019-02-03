@@ -289,7 +289,7 @@ var onPaint = function() {
 };
 let drawingsPage = document.querySelector("#drawings-page");
 let drawPage = document.querySelector("#draw-page");
-let drawPage = document.querySelector("#draw-page");
+let gallery = document.querySelector("#gallery");
 
 document.querySelector("#button-wall").addEventListener("click", function() {
   drawingsPage.style.display = "inline";
@@ -306,5 +306,5 @@ document.querySelector("#button-add-drawing").addEventListener("click", function
   // here is the most important part because if you dont replace you will get a DOM 18 exception.
   var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  
 
-  drawingsPage.href=image;
+  gallery.href=image;
 });

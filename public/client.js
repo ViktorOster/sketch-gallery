@@ -303,8 +303,15 @@ document.querySelector("#button-draw").addEventListener("click", function() {
 document.querySelector("#button-add-drawing").addEventListener("click", function() {
   //save drawing and create div with drawing and add it to drawings page with addelement
 
-  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-  var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  
-
-  gallery.href=image;
+  putImage();
 });
+
+function putImage() {
+               
+  let myImage = canvas.toDataURL("image/png");  
+  let img = document.createElement("img");
+  img.src = myImage;
+  gallery.appendChild(img);
+                         
+
+}  

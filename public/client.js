@@ -321,8 +321,9 @@ function putImage() {
   img.style.margin = "10px";
   img.style.border ="1px solid black";
   img.src = myImage;
-  gallery.appendChild(img);
-  
-                         
-
+  gallery.appendChild(img);                      
 }  
+
+window.onload = function () {
+  //get the stored images from file and display them 
+}

@@ -32,43 +32,43 @@ toolButtons.push(document.getElementById("box3"));
 toolButtons.push(document.getElementById("box4"));
 
 //for undo/redo
-var cPushArray = new Array();
-var cStep = -1;
-//undo redo doesnt work yet
-function cPush() {
-  console.log("PUSHED");
-  cStep++;
-  if (cStep < cPushArray.length) {
-    cPushArray.length = cStep;
-  }
-  var image = document.getElementById("canvas").toDataURL();
-  cPushArray.push(image);
-}
-function cUndo() {
-  if (cStep > 0) {
-    cStep--;
-    var canvasPic = new Image();
-    // canvasPic.src = cPushArray[cStep];
-    canvasPic.src = "https://i.stack.imgur.com/kS9Kf.png";
-    canvasPic.onload = function() {
-      console.log("UNDO");
-      ctx.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
-      ctxShapes.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
-    };
-  }
-}
-function cRedo() {
-  if (cStep < cPushArray.length - 1) {
-    cStep++;
-    var canvasPic = new Image();
-    canvasPic.src = cPushArray[cStep];
-    canvasPic.onload = function() {
-      console.log("REDO");
-      ctx.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
-      ctxShapes.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
-    };
-  }
-}
+// var cPushArray = new Array();
+// var cStep = -1;
+// //undo redo doesnt work yet
+// function cPush() {
+//   console.log("PUSHED");
+//   cStep++;
+//   if (cStep < cPushArray.length) {
+//     cPushArray.length = cStep;
+//   }
+//   var image = document.getElementById("canvas").toDataURL();
+//   cPushArray.push(image);
+// }
+// function cUndo() {
+//   if (cStep > 0) {
+//     cStep--;
+//     var canvasPic = new Image();
+//     // canvasPic.src = cPushArray[cStep];
+//     canvasPic.src = "https://i.stack.imgur.com/kS9Kf.png";
+//     canvasPic.onload = function() {
+//       console.log("UNDO");
+//       ctx.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
+//       ctxShapes.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
+//     };
+//   }
+// }
+// function cRedo() {
+//   if (cStep < cPushArray.length - 1) {
+//     cStep++;
+//     var canvasPic = new Image();
+//     canvasPic.src = cPushArray[cStep];
+//     canvasPic.onload = function() {
+//       console.log("REDO");
+//       ctx.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
+//       ctxShapes.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
+//     };
+//   }
+// }
 
 canvasShapes.addEventListener(
   "mousemove",
@@ -276,7 +276,7 @@ canvasShapes.addEventListener(
   "mouseup",
   function() {
     canvasShapes.removeEventListener("mousemove", onPaint, false);
-    cPush();
+    //cPush();
   },
   false
 );

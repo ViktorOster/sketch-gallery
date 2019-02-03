@@ -305,13 +305,16 @@ document.querySelector("#button-add-drawing").addEventListener("click", function
 
   putImage();
 });
+document.querySelector("#button-clear-drawing").addEventListener("click", function() {
+  
+});
 
 function putImage() {
                
   let myImage = canvas.toDataURL("image/png");  
   let img = document.createElement("img");
-  img.style.width = "200px";
-  img.style.height = "200px";
+  img.style.width = "266px";
+  img.style.height = "175px";
   img.style.background = "white";
   img.style.margin = "10px";
   img.style.border ="1px solid black";

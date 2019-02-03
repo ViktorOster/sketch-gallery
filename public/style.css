@@ -236,7 +236,16 @@ textarea {
   height:100vh;
   background:white;
 }
-
+#button-add-drawing {
+  width:80px;
+  height:60px;
+  background:yellow;
+}
+#gallery {
+  width:100%vw;
+  height:100vh;
+  background:green;
+}
 
 @media screen and (max-width: 700px) {
   #container-paint-tools {

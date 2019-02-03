@@ -289,14 +289,22 @@ var onPaint = function() {
 };
 let drawingsPage = document.querySelector("#drawings-page");
 let drawPage = document.querySelector("#draw-page");
+let drawPage = document.querySelector("#draw-page");
 
-let buttonWall = document.querySelector("#button-wall");
-let buttonDraw= document.querySelector("#button-draw");
-buttonWall.addEventListener("click", function() {
+document.querySelector("#button-wall").addEventListener("click", function() {
   drawingsPage.style.display = "inline";
   drawPage.style.display ="none";
 });
-buttonDraw.addEventListener("click", function() {
+document.querySelector("#button-draw").addEventListener("click", function() {
   drawPage.style.display ="inline";
   drawingsPage.style.display ="none";
+});
+
+document.querySelector("#button-add-drawing").addEventListener("click", function() {
+  //save drawing and create div with drawing and add it to drawings page with addelement
+
+  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+  var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  
+
+  drawingsPage.href=image;
 });

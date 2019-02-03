@@ -1,71 +1,257 @@
-/* styles */
-/* called by your view template */
-
 * {
-  box-sizing: border-box;
-}
+  margin: 0;
+  padding: 0;
+} /* to remove the top and left whitespace */
 
+html,
 body {
-  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
-}
-
-h1 {
-  font-style: italic;
-  color: #373fff;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-p {
-  max-width: 600px;
-}
-
-form {
-  margin-bottom: 25px;
-  padding: 15px;
-  background-color: cyan;
-  display: inline-block;
   width: 100%;
-  max-width: 340px;
-  border-radius: 3px;
-}
+  height: 100%;
+  background: #f2f2f2;
+  margin: 4px;
+  overflow: hidden;
+  font-family: sans-serif;
+} /* just to be sure these are full screen*/
 
-input {
-  display: block;
+#header {
+  font-size: 25pt;
+  background: rgb(6, 94, 129);
+  color: white;
+  padding: 5px 20px;
+  padding-top: 20px;
   margin-bottom: 10px;
-  padding: 5px;
+}
+#paint {
+  background: white;
+  /* float:right; */
+  height: 80%;
+  display: block;
+  float: left;
+  margin-left: 16px;
+  overflow: hidden;
+  /* float: top; */
+  /* width: 100%; */
+  width: 80%;
+  border: 1px solid lightGray;
+}
+#paint:hover {
+  cursor: none;
+}
+
+#canvas {
+  display: block;
+  position: absolute;
+}
+#canvasShapes {
+  display: block;
+  position: absolute;
+}
+#top-tools {
+  float: top;
+}
+#container-paint-tools {
+  /* background: #e1e1e1; */
+  margin-top: 32px;
+  margin-bottom: 16px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 48px;
+
+  height: 242px;
+  grid-auto-rows: 48px;
+  float: left;
+  clear: both;
+}
+.button {
+  border: 1px solid #bbb;
+  /* margin: 2px; */
+  background-image: linear-gradient(
+    rgb(241, 241, 241),
+    rgb(211, 211, 211),
+    rgb(241, 241, 241)
+  );
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+.button:hover {
+  border: 1px solid rgb(14, 98, 255);
+}
+.button:active {
+  box-shadow: -3px 3px 12px gray;
+}
+.button.button-selected {
+  background-image: linear-gradient(rgb(195, 216, 255), rgb(105, 144, 216));
+  border: 1px solid rgb(14, 98, 255);
+}
+
+/* Tooltip text */
+.button .tooltiptext {
+  white-space: nowrap;
+  pointer-events: none;
+  visibility: hidden;
+  /* width: 120px; */
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 6px;
+  border-radius: 4px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  left: 110%;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+/* .button .tooltiptext::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #555 transparent transparent;
+} */
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.button:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.button:focus .tooltiptext {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+#colorPicker {
+  clear: both;
   width: 100%;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
+  height: 100%;
+  /* height: 83px; */
+}
+
+.slidecontainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 200px;
+  text-align: center;
+  padding-bottom: 8px;
+  /* float: left; */
+  width: 166px; /* Width of the outside container */
+}
+.slidecontainer > p {
+  padding-bottom: 8px;
+  font-family: "Arial";
+  font-size: 14px;
+}
+
+span {
+  margin-top: 4px;
+  margin-right: 8px;
+  font-family: "Arial";
   font-size: 16px;
 }
 
-button {
-  font-size: 16px;
-  border-radius: 3px;
-  background-color: lightgrey;
-  border: 1px solid grey;
-  box-shadow: 2px 2px teal;
+/* The slider itself */
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 166px; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  border-radius: 20px;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+#canvas {
+  position: absolute;
+  z-index: 1;
+}
+#canvasShapes {
+  position: absolute;
+  z-index: 2;
+}
+#cursor {
+  pointer-events: none;
+  position: absolute;
+  border: 2px solid black;
+  opacity: 0.4;
+  z-index: 3;
+  border-radius: 100%;
+}
+textarea {
+  z-index: 4;
+}
+#colorPicker:hover {
   cursor: pointer;
 }
+@media screen and (max-width: 700px) {
+  #container-paint-tools {
+    float: top;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
-button:hover {
-  background-color: yellow;
+    height: 48px;
+    width: 242px;
+    /* margin: auto; */
+    margin-left: 12px;
+    margin-top: auto;
+  }
+  .slidecontainer {
+    float: left;
+    margin-left: 16px;
+    text-align: center;
+    margin-top: 12px;
+    /* float: left; */
+    width: 166px; /* Width of the outside container */
+  }
+  #paint {
+    width: 95%;
+  }
 }
-
-button:active {
-  box-shadow: none;
-}
-
-li {
-  margin-bottom: 5px;
-}
-
-footer {
-  margin-top: 50px;
-  padding-top: 25px;
-  border-top: 1px solid lightgrey;
+@media screen and (max-width: 600px) {
+  .slidecontainer {
+    float: top;
+    margin-left: 12px;
+    margin-top: 0;
+    clear: both;
+  }
+  #header {
+    display: none;
+  }
 }

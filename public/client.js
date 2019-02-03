@@ -1,42 +1,289 @@
-// client-side js
-// run by the browser each time your view template is loaded
+var chosenTool = [false, true, false, false];
 
-console.log('hello world :o');
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var canvasShapes = document.getElementById("canvasShapes");
+var ctxShapes = canvasShapes.getContext("2d");
 
-// our default array of dreams
-const dreams = [
-  'Find and count some sheep',
-  'Climb a really tall mountain',
-  'Wash the dishes'
-];
+var colorPicker = document.getElementById("colorPicker");
+var shapeStart = { x: 0, y: 0 };
+var isMouseHeld = false;
+var isCreatingTextElement = false;
+var textElement;
+var sizeFont = "16px";
+var fontType = "Arial";
+var backgroundColor = document.getElementById("box1").style.background;
+var highlightColor = "#ffffff";
 
-// define variables that reference elements on our page
-const dreamsList = document.getElementById('dreams');
-const dreamsForm = document.forms[0];
-const dreamInput = dreamsForm.elements['dream'];
+var painting = document.getElementById("paint");
+var paint_style = getComputedStyle(painting);
+canvas.width = parseInt(paint_style.getPropertyValue("width"));
+canvas.height = parseInt(paint_style.getPropertyValue("height"));
+canvasShapes.width = canvas.width;
+canvasShapes.height = canvas.height;
+var myCursor = document.getElementById("cursor");
 
-// a helper function that creates a list item for a given dream
-const appendNewDream = function(dream) {
-  const newListItem = document.createElement('li');
-  newListItem.innerHTML = dream;
-  dreamsList.appendChild(newListItem);
+var mouse = { x: 0, y: 0 };
+
+var toolButtons = [];
+toolButtons.push(document.getElementById("box1"));
+toolButtons.push(document.getElementById("box2"));
+toolButtons.push(document.getElementById("box3"));
+toolButtons.push(document.getElementById("box4"));
+
+//for undo/redo
+var cPushArray = new Array();
+var cStep = -1;
+//undo redo doesnt work yet
+function cPush() {
+  console.log("PUSHED");
+  cStep++;
+  if (cStep < cPushArray.length) {
+    cPushArray.length = cStep;
+  }
+  var image = document.getElementById("canvas").toDataURL();
+  cPushArray.push(image);
+}
+function cUndo() {
+  if (cStep > 0) {
+    cStep--;
+    var canvasPic = new Image();
+    // canvasPic.src = cPushArray[cStep];
+    canvasPic.src = "https://i.stack.imgur.com/kS9Kf.png";
+    canvasPic.onload = function() {
+      console.log("UNDO");
+      ctx.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
+      ctxShapes.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
+    };
+  }
+}
+function cRedo() {
+  if (cStep < cPushArray.length - 1) {
+    cStep++;
+    var canvasPic = new Image();
+    canvasPic.src = cPushArray[cStep];
+    canvasPic.onload = function() {
+      console.log("REDO");
+      ctx.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
+      ctxShapes.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
+    };
+  }
 }
 
-// iterate through every dream and add it to our page
-dreams.forEach( function(dream) {
-  appendNewDream(dream);
-});
+canvasShapes.addEventListener(
+  "mousemove",
+  function(e) {
+    mouse.x = e.pageX - this.offsetLeft;
+    mouse.y = e.pageY - this.offsetTop;
+    // myCursor.style.left = (mouse.x + 68).toString() + "px";
+    // myCursor.style.top = (mouse.y + 30).toString() + "px";
+    myCursor.style.left = e.pageX - 2 - ctx.lineWidth / 2 + "px";
+    myCursor.style.top = e.pageY - 2 - ctx.lineWidth / 2 + "px";
 
-// listen for the form to be submitted and add a new dream when it is
-dreamsForm.onsubmit = function(event) {
-  // stop our form submission from refreshing the page
-  event.preventDefault();
+    myCursor.style.width = ctx.lineWidth + "px";
+    myCursor.style.height = ctx.lineWidth + "px";
+  },
+  false
+);
+canvasShapes.addEventListener(
+  "mouseenter",
+  function(e) {
+    myCursor.style.visibility = "visible";
+  },
+  false
+);
+canvasShapes.addEventListener(
+  "mouseout",
+  function(e) {
+    myCursor.style.visibility = "hidden";
+  },
+  false
+);
 
-  // get dream value and add it to the list
-  dreams.push(dreamInput.value);
-  appendNewDream(dreamInput.value);
+ctx.lineWidth = 10;
+ctxShapes.lineWidth = ctx.lineWidth;
+ctx.lineJoin = "round";
+ctx.lineCap = "round";
+ctxShapes.lineJoin = "round";
+ctxShapes.lineCap = "round";
+var val = "#00ff00";
+ctx.strokeStyle = val;
+ctxShapes.strokeStyle = val;
 
-  // reset form 
-  dreamInput.value = '';
-  dreamInput.focus();
+document.getElementById("myRange").oninput = function() {
+  var val2 = document.getElementById("myRange").value; //gets the oninput value
+  ctx.lineWidth = val2;
+  ctxShapes.lineWidth = val2;
+};
+
+window.onload = function() {
+  for (var x in toolButtons) {
+    toolButtons[x].addEventListener("click", handleToolButtons);
+  }
+};
+function handleToolButtons() {
+  for (var x in chosenTool) {
+    if (x == parseInt(this.id.substring(3)) - 1) {
+      chosenTool[x] = true;
+      toolButtons[x].className += " button-selected";
+    } else {
+      chosenTool[x] = false;
+      toolButtons[x].classList.remove("button-selected");
+    }
+  }
+  if (this.id == "box4") {
+    ctxShapes.strokeStyle = "white";
+    ctx.strokeStyle = "white";
+  } else {
+    ctx.strokeStyle = val;
+    ctxShapes.strokeStyle = val;
+  }
+  if (document.body.contains(textElement)) painting.removeChild(textElement);
+}
+
+colorPicker.addEventListener("change", watchColorPicker, false);
+function watchColorPicker(event) {
+  ctx.strokeStyle = event.target.value;
+  ctxShapes.strokeStyle = event.target.value;
+  val = event.target.value;
+}
+var mouseMoveListener = function() {
+  // document.removeEventListener('mousemove', mouseMoveListener, false);
+  if ((chosenTool[0] == true || chosenTool[2] == true) && isMouseHeld) {
+    // clear the canvas
+    ctxShapes.clearRect(0, 0, canvas.width, canvas.height);
+
+    var width = mouse.x - shapeStart.x;
+    var height = mouse.y - shapeStart.y;
+    var temp1 = ctxShapes.lineWidth;
+    var temp2 = ctx.strokeStyle;
+    if (isCreatingTextElement) {
+      ctxShapes.lineWidth = 1;
+
+      ctxShapes.strokeStyle = "#000000";
+    }
+    ctxShapes.strokeRect(shapeStart.x, shapeStart.y, width, height);
+    ctxShapes.lineWidth = temp1;
+    ctxShapes.strokeStyle = temp2;
+  }
+};
+
+document.addEventListener("mousemove", mouseMoveListener, false);
+
+canvasShapes.addEventListener(
+  "mouseup",
+  function(e) {
+    if (chosenTool[0] == true) {
+      ctx.strokeRect(
+        shapeStart.x,
+        shapeStart.y,
+        mouse.x - shapeStart.x,
+        mouse.y - shapeStart.y
+      );
+    }
+    if (isCreatingTextElement) {
+      ctxShapes.clearRect(0, 0, canvas.width, canvas.height);
+      textElement = document.createElement("textarea");
+      // textElement.type = "textarea";
+      textElement.style.position = "relative";
+      textElement.style.left = shapeStart.x + "px";
+      textElement.style.top = shapeStart.y + "px";
+      textElement.style.fontFamily = fontType;
+      textElement.style.fontSize = sizeFont;
+      textElement.style.lineHeight = sizeFont;
+      textElement.style.opacity = "0.5";
+      var width = mouse.x - shapeStart.x;
+      var height = mouse.y - shapeStart.y;
+      textElement.style.height = height + "px";
+      textElement.style.width = width + "px";
+
+      painting.appendChild(textElement);
+      isCreatingTextElement = false;
+    }
+    isMouseHeld = false;
+  },
+  false
+);
+
+canvasShapes.addEventListener(
+  "mousedown",
+  function(e) {
+    isMouseHeld = true;
+    if (chosenTool[0] == true) {
+      shapeStart.x = mouse.x;
+      shapeStart.y = mouse.y;
+      drawShapePreview();
+    }
+
+    if (chosenTool[1] == true || chosenTool[3] == true) {
+      ctx.beginPath();
+      ctx.moveTo(mouse.x, mouse.y);
+      ctxShapes.beginPath();
+      ctxShapes.moveTo(mouse.x, mouse.y);
+
+      canvasShapes.addEventListener("mousemove", onPaint, false);
+    }
+    if (chosenTool[2] == true) {
+      isCreatingTextElement = true;
+      shapeStart.x = mouse.x;
+      shapeStart.y = mouse.y;
+      if (document.body.contains(textElement)) {
+        ctx.font = sizeFont + " " + fontType;
+        ctx.font.lineHeight = "0";
+        var leftPos =
+          parseInt(
+            textElement.style.left.substring(
+              0,
+              textElement.style.left.length - 2
+            )
+          ) + 1;
+        var topPos =
+          parseInt(
+            textElement.style.top.substring(0, textElement.style.top.length - 2)
+          ) - 2;
+        var lines = textElement.value.split("\n");
+        var offset = parseInt(sizeFont.substring(0, sizeFont.length - 2));
+
+        for (var i = 0; i < lines.length; i++)
+          // ctx.fillText(lines[i], leftPos, topPos + (i*parseInt(sizeFont.substring(0, sizeFont.length - 2))) );
+          ctx.fillText(
+            lines[i],
+            leftPos,
+            topPos +
+              offset +
+              i * parseInt(sizeFont.substring(0, sizeFont.length - 2))
+          );
+
+        painting.removeChild(textElement);
+      }
+    }
+  },
+  false
+);
+function drawShapePreview() {
+  if (isMouseHeld && chosenTool[0] == true) {
+    ctxShapes.strokeRect(
+      shapeStart.x,
+      shapeStart.y,
+      mouse.x - shapeStart.x,
+      mouse.y - shapeStart.y
+    );
+    setTimeout("drawShapePreview()", 1);
+  } else return;
+}
+
+canvasShapes.addEventListener(
+  "mouseup",
+  function() {
+    canvasShapes.removeEventListener("mousemove", onPaint, false);
+    cPush();
+  },
+  false
+);
+
+var onPaint = function() {
+  ctx.lineTo(mouse.x, mouse.y);
+  ctx.stroke();
+  ctxShapes.lineTo(mouse.x, mouse.y);
+  ctxShapes.stroke();
 };

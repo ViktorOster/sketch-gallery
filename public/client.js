@@ -310,8 +310,14 @@ function putImage() {
                
   let myImage = canvas.toDataURL("image/png");  
   let img = document.createElement("img");
+  img.style.width = "200px";
+  img.style.height = "200px";
+  img.style.background = "white";
+  img.style.margin = "10px";
+  img.style.border ="1px solid black";
   img.src = myImage;
   gallery.appendChild(img);
+  
                          
 
 }  

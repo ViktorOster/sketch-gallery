@@ -350,3 +350,9 @@ function sendToServer(base64drawing)
     }
   } 
 }
+
+window.onresize = function(event) {
+  console.log("resize");
+  //let myImage = canvas.toDataURL("image/png");  
+  
+};

@@ -76,8 +76,10 @@ toolButtons.push(document.getElementById("box1"));
 toolButtons.push(document.getElementById("box2"));
 toolButtons.push(document.getElementById("box3"));
 toolButtons.push(document.getElementById("box4"));
+
 document.querySelector("#clear").addEventListener("click", function() {
-  
+  ctxShapes.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
 for (let x in toolButtons) {
@@ -274,11 +276,7 @@ document.querySelector("#button-add-drawing").addEventListener("click", function
 
   putImage();
 });
-document.querySelector("#button-clear-drawing").addEventListener("click", function() {
-  ctxShapes.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-});
+
 let imagesData = [];
 function putImage() {
   //save dataUrl in flat file system???

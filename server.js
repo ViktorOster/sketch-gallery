@@ -6,9 +6,19 @@ const express = require('express');
 const app = express();
 
 const fs = require("fs");
-const words = fs.readFileSync(".data/drawings.json");
-console.log(words);
 
+function saveDrawing(base64drawing) {
+  fs.writeFile(".data/drawings.json", base64drawing, finished);
+  function finished(err) {
+    console.log("all set."); 
+  }
+}
+getDrawings();
+function getDrawings() {
+  const data = fs.readFileSync(".data/drawings.json");
+  const words = JSON.parse(data);
+  console.log(words);
+}
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.

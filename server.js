@@ -23,20 +23,21 @@ app.post('/save', function(req, res) {
 app.post('/load', function(req, res) {
   console.log("get drawings");
   let data = getDrawings();
-  if(data) res.send(data);
+  if(data) res.json(data);
 });
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
 function saveDrawing(dataToSave, res) {
-  var index = 0;
-  var data = fs.readFileSync("public/drawings.json");
+  let index = 0;
+  let data = fs.readFileSync("public/drawings.json");
+  let imgs = {};
   if(data.toString()) {
-    var imgs = JSON.parse(imgs);
-    var index = Object.keys(imgs).length;
+    imgs = JSON.parse(data);
+    let index = Object.keys(imgs).length;
   } 
-  
-  var obj = {index: dataToSave};
-  var json = JSON.stringify(obj, null, 2);
+    
+  imgs[index] = dataToSave;
+  let json = JSON.stringify(imgs, null, 2);
   fs.writeFile("public/drawings.json", json, finished);
   function finished() {
     console.log("saved to file");
@@ -44,10 +45,9 @@ function saveDrawing(dataToSave, res) {
 }
 //getDrawings();
 function getDrawings() { 
-  var data = fs.readFileSync("public/drawings.json");
+  let data = fs.readFileSync("public/drawings.json");
   if(data.toString()) {
-    var imgs = JSON.parse(imgs);
-    console.log("got these images", imgs);
+    let imgs = JSON.parse(data);
     return imgs;
   } else return null;
   

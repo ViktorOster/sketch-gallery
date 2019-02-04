@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 app.post('/save', function(req, res) {
   console.log("save drawing");
-  var data = Object.keys(req.body)[0];
+  var data = req.body.data;
   saveDrawing(data, res);
 });
 

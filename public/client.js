@@ -364,7 +364,6 @@ function loadImages() {
         img.style.background = "white";
         img.style.margin = "10px";
         img.style.border ="1px solid black";
-        console.log("IMAGEDATA", imgData);
         img.src = imgData;
         gallery.appendChild(img);
       }
@@ -380,14 +379,12 @@ function sendToServer(base64drawing)
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("load", reqListener);
   xhr.open('POST', '/save', true);
-  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  xhr.send(base64drawing);
+  xhr.setRequestHeader('Content-type', 'application/json');
+  xhr.send(JSON.stringify({ data: base64drawing }));
   function reqListener () {
     //console.log("response from server", this.response);
     var root = document.getElementById("gallery");
-    //let obj = JSON.parse(this.response);
-    console.log("RESPONSE", this.response);
-    let obj = false;
+    let obj = JSON.parse(this.response);
     if(obj) {
       for (var key in obj) {
         var imgData = obj[key];

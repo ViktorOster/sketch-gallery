@@ -314,12 +314,11 @@ function loadImages() {
       for (let key in obj) {
         let imgData = obj[key].data.toString();
         let img = document.createElement("img");
-        let heightRatio = obj[key].width/obj[key].height;
-        let maxWidth = 300;
-        let maxHeight = 300;
-        let height = 300 * heightRatio;
-        img.style.width = maxWidth;
-        img.style.height = height;
+        let heightRatio = obj[key].height/obj[key].width;
+        let maxWidth = 500;
+        let height = maxWidth * heightRatio;
+        img.style.width = maxWidth + "px";
+        img.style.height = height + "px";
         img.style.background = "white";
         img.style.margin = "10px";
         img.style.border ="1px solid black";
@@ -352,11 +351,11 @@ function sendToServer(base64drawing)
       for (var key in obj) {
         let imgData = obj[key].data.toString();
         let img = document.createElement("img");
-        let heightRatio = obj[key].width/obj[key].height;
-        let maxWidth = 150;
+        let heightRatio = obj[key].height/obj[key].width;
+        let maxWidth = 500;
         let height = maxWidth * heightRatio;
-        img.style.width = maxWidth;
-        img.style.height = height;
+        img.style.width = maxWidth + "px";
+        img.style.height = height + "px";
         img.style.background = "white";
         img.style.margin = "10px";
         img.style.border ="1px solid black";

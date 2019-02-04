@@ -24,6 +24,11 @@ canvasShapes.height = canvas.height;
 var myCursor = document.getElementById("cursor");
 
 var mouse = { x: 0, y: 0 };
+var paintSettings = {
+  color: "green",
+  lineWidth: 10
+  
+}
 
 canvasShapes.addEventListener(
   "mousemove",
@@ -71,6 +76,7 @@ document.getElementById("myRange").oninput = function() {
   var val2 = document.getElementById("myRange").value; //gets the oninput value
   ctx.lineWidth = val2;
   ctxShapes.lineWidth = val2;
+  paintSettings.lineWidth = val2;
 };
 
 let toolButtons = [];
@@ -113,6 +119,7 @@ function watchColorPicker(event) {
   ctx.strokeStyle = event.target.value;
   ctxShapes.strokeStyle = event.target.value;
   val = event.target.value;
+  paintSettings.color = event.target.value;
 }
 var mouseMoveListener = function() {
   // document.removeEventListener('mousemove', mouseMoveListener, false);
@@ -305,10 +312,11 @@ function loadImages() {
     let obj = JSON.parse(this.response);
     if(obj) {
       for (var key in obj) {
-        var imgData = obj[key].toString();
+        var imgData = obj[key].data.toString();
         let img = document.createElement("img");
-        img.style.width = "366px";
-        img.style.height = "275px";
+        var aspectRatio 
+        img.style.width = obj[key].width;
+        img.style.height = obj[key].height;
         img.style.background = "white";
         img.style.margin = "10px";
         img.style.border ="1px solid black";
@@ -328,7 +336,7 @@ function sendToServer(base64drawing)
   xhr.addEventListener("load", reqListener);
   xhr.open('POST', '/save', true);
   xhr.setRequestHeader('Content-type', 'application/json');
-  xhr.send(JSON.stringify({ data: base64drawing }));
+  xhr.send(JSON.stringify({ data: base64drawing, width: canvas.width, height: canvas.height }));
   function reqListener () {
     //console.log("response from server", this.response);
     var root = document.getElementById("gallery");
@@ -360,5 +368,13 @@ window.onresize = function(event) {
   canvas.height = parseInt(paint_style.getPropertyValue("height"));
   canvasShapes.width = canvas.width;
   canvasShapes.height = canvas.height;
+  ctx.lineWidth = paintSettings.lineWidth;
+  ctxShapes.lineWidth = ctx.lineWidth;
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
+  ctxShapes.lineJoin = "round";
+  ctxShapes.lineCap = "round";
+  ctx.strokeStyle = paintSettings.color;
+  ctxShapes.strokeStyle = ctx.strokeStyle;
   
 };

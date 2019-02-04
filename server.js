@@ -16,8 +16,10 @@ app.use(bodyParser.json());
 
 app.post('/save', function(req, res) {
   console.log("save drawing");
-  var data = req.body.data;
-  saveDrawing(data, res);
+  var dataDrawing = req.body.data;
+  var drawingWidth = req.body.width;
+  var drawingHeight = req.body.height;
+  saveDrawing(dataDrawing, drawingWidth, drawingHeight, res);
 });
 
 app.post('/load', function(req, res) {
@@ -27,7 +29,7 @@ app.post('/load', function(req, res) {
 });
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
-function saveDrawing(dataToSave, res) {
+function saveDrawing(dataToSave, width, height, res) {
   let index = 0;
   let data = fs.readFileSync("public/drawings.json");
   let imgs = {};
@@ -36,7 +38,10 @@ function saveDrawing(dataToSave, res) {
     index = Object.keys(imgs).length;
   } 
     
-  imgs[index] = dataToSave;
+  imgs[index].data = dataToSave;
+  imgs[index].width = width;
+  imgs[index].height = height;
+  
   let json = JSON.stringify(imgs, null, 2);
   fs.writeFile("public/drawings.json", json, finished);
   function finished() {

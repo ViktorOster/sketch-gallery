@@ -305,8 +305,8 @@ function loadImages() {
       for (var key in obj) {
         var imgData = obj[key].toString();
         let img = document.createElement("img");
-        img.style.width = "266px";
-        img.style.height = "175px";
+        img.style.width = "366px";
+        img.style.height = "275px";
         img.style.background = "white";
         img.style.margin = "10px";
         img.style.border ="1px solid black";
@@ -339,8 +339,8 @@ function sendToServer(base64drawing)
       for (var key in obj) {
         var imgData = obj[key];
         let img = document.createElement("img");
-        img.style.width = "266px";
-        img.style.height = "175px";
+        img.style.width = "366px";
+        img.style.height = "275px";
         img.style.background = "white";
         img.style.margin = "10px";
         img.style.border ="1px solid black";

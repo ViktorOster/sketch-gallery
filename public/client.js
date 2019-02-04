@@ -25,71 +25,6 @@ var myCursor = document.getElementById("cursor");
 
 var mouse = { x: 0, y: 0 };
 
-var toolButtons = [];
-toolButtons.push(document.getElementById("box1"));
-toolButtons.push(document.getElementById("box2"));
-toolButtons.push(document.getElementById("box3"));
-toolButtons.push(document.getElementById("box4"));
-
-//for undo/redo
-// var cPushArray = new Array();
-// var cStep = -1;
-// //undo redo doesnt work yet
-// function cPush() {
-//   console.log("PUSHED");
-//   cStep++;
-//   if (cStep < cPushArray.length) {
-//     cPushArray.length = cStep;
-//   }
-//   var image = document.getElementById("canvas").toDataURL();
-//   cPushArray.push(image);
-// }
-// function cUndo() {
-//   if (cStep > 0) {
-//     cStep--;
-//     var canvasPic = new Image();
-//     // canvasPic.src = cPushArray[cStep];
-//     canvasPic.src = "https://i.stack.imgur.com/kS9Kf.png";
-//     canvasPic.onload = function() {
-//       console.log("UNDO");
-//       ctx.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
-//       ctxShapes.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
-//     };
-//   }
-// }
-// function cRedo() {
-//   if (cStep < cPushArray.length - 1) {
-//     cStep++;
-//     var canvasPic = new Image();
-//     canvasPic.src = cPushArray[cStep];
-//     canvasPic.onload = function() {
-//       console.log("REDO");
-//       ctx.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
-//       ctxShapes.drawImage(canvasPic, 0, 0, canvas.width, canvas.height);
-//     };
-//   }
-// }
-
-function init() {
- loadJSON(function(response) {
-  // Parse JSON string into object
-    var actual_JSON = JSON.parse(response);
- });
-}
- function loadJSON(callback) {   
-
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'my_data.json', false); // Replace 'my_data' with the path to your file
-    xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-            callback(xobj.responseText);
-          }
-    };
-    xobj.send(null);  
- }
-
 canvasShapes.addEventListener(
   "mousemove",
   function(e) {
@@ -136,11 +71,16 @@ document.getElementById("myRange").oninput = function() {
   ctxShapes.lineWidth = val2;
 };
 
-window.onload = function() {
-  for (var x in toolButtons) {
-    toolButtons[x].addEventListener("click", handleToolButtons);
-  }
-};
+let toolButtons = [];
+toolButtons.push(document.getElementById("box1"));
+toolButtons.push(document.getElementById("box2"));
+toolButtons.push(document.getElementById("box3"));
+toolButtons.push(document.getElementById("box4"));
+
+for (let x in toolButtons) {
+  toolButtons[x].addEventListener("click", handleToolButtons);
+}
+
 function handleToolButtons() {
   for (var x in chosenTool) {
     if (x == parseInt(this.id.substring(3)) - 1) {

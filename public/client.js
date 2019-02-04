@@ -343,7 +343,8 @@ function putImage() {
   img.style.margin = "10px";
   img.style.border ="1px solid black";
   img.src = myImage;
-  gallery.appendChild(img);                      
+  //gallery.appendChild(img);
+  sendToServer(myImage);
 }  
 
 window.onload = function () {
@@ -352,11 +353,14 @@ window.onload = function () {
 function sendToServer(base64drawing)
 {
   console.log("calling server");
+  var data = {value: base64drawing}
+  console.log(data);
+  
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("load", reqListener);
   xhr.open('POST', '/', true);
   xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-  xhr.send(base64drawing);
+  xhr.send(JSON.stringify(data));
 
   function reqListener () {
     console.log("response from server");

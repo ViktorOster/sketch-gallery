@@ -4,22 +4,30 @@
 // init project
 const express = require('express');
 const app = express();
-
 const fs = require("fs");
+
+app.post('/', function(req, res) {
+  console.log("saving drawing");
+  var drawing = req.body.value;
+  saveDrawing(drawing, res);
+  
+  
+});
+
 //TODO: save hash in localstorage and use it to optionally filter drawings
-function saveDrawing(base64drawing) {
-  var data = {drawing: base64drawing};
-  var data = JSON.stringify(base64drawing, null, 2);
+function saveDrawing(data, res) {
   fs.writeFile(".data/drawings.json", data, finished);
   function finished(err) {
-    console.log("all set."); 
+    console.log("saved.");
+    var drawings = getDrawings();
+    res.json(drawings);
   }
 }
 getDrawings();
 function getDrawings() {
   const data = fs.readFileSync(".data/drawings.json");
   const words = JSON.parse(data);
-  console.log(words);
+  console.log("got these drawings:", words);
 }
 
 

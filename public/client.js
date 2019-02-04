@@ -394,11 +394,11 @@ function sendToServer(base64drawing)
 
   function reqListener () {
     console.log("response from server");
-    console.log(this.response);
+    //console.log(this.response);
     var root = document.getElementById("gallery");
     
     var res = JSON.parse(this.response);
-    console.log("RESPONSE", res);
+    //console.log("RESPONSE", res);
     Object.keys(res).forEach(function(key) {
 
     let img = document.createElement("img");

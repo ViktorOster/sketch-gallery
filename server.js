@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.post('/save', function(req, res) {
   var data = req.body.value;
   saveDrawing(data, res);
+  console.log("GOT THIS DATA", data);
 });
 
 app.post('/load', function(req, res) {
@@ -27,18 +28,13 @@ app.post('/load', function(req, res) {
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
 function saveDrawing(dataToSave, res) {
-  fs.readFile('public/drawings.txt', 'utf8', function readFileCallback(err, data){
-    if (err){
-        console.log(err);
-    } else {
-    let drawingsArr = data.split("\n");
-    drawingsArr.push(dataToSave);
-    fs.writeFile('public/drawings.txt', arr, 'utf8', done); // write it back 
-      
-    function done() {
-      console.log("wrote to file"); 
-    }
-  }});
+  fs.open('public/drawings.txt', 'a', 666, function( err, data ) {
+   fs.write( data, dataToSave + "\n", null, 'utf8', function(){
+    fs.close(data, function(){
+     console.log('file is updated');
+    });
+   });
+  });
 }
 //getDrawings();
 function getDrawings() { 

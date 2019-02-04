@@ -356,6 +356,7 @@ function loadImages() {
 
     var root = document.getElementById("gallery");
     if(this.response) {
+      var imgArr
       
 //         let img = document.createElement("img");
 //         img.style.width = "266px";
@@ -381,8 +382,8 @@ function sendToServer(base64drawing)
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("load", reqListener);
   xhr.open('POST', '/save', true);
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhr.send(base64drawing);
-  console.log("SEIND THIS TO SERVER", base64drawing);
   function reqListener () {
     console.log("response from server", this.response);
     //console.log(this.response);

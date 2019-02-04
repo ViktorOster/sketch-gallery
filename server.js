@@ -15,15 +15,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.post('/save', function(req, res) {
-  var data = req.body.value;
+  console.log("save drawing");
+  var data = Object.keys(req.body)[0];
   saveDrawing(data, res);
-  console.log("GOT THIS DATA", data);
 });
 
 app.post('/load', function(req, res) {
   console.log("get drawings");
   let data = getDrawings();
-  if(data) res.json(data);
+  if(data) res.send(data);
 });
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
@@ -40,8 +40,7 @@ function saveDrawing(dataToSave, res) {
 function getDrawings() { 
   var data = fs.readFileSync("public/drawings.txt", "utf8");
   if(data){
-    let drawingsArr = data.split("\n");
-    return drawingsArr;
+    return data;
   } else return null;
   
 }

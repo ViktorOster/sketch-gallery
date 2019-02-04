@@ -42,16 +42,12 @@ h3 {
 #paint:hover {
   cursor: none;
 }
+.canvas {
+/*   position: absolute; */
+  width:100%;
+  height:100%;
+}
 
-#canvas {
-  display: block;
-  position: absolute;
-  
-}
-#canvasShapes {
-  display: block;
-  position: absolute;
-}
 #top-tools {
   float: top;
 }

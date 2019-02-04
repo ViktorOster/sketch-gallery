@@ -28,6 +28,7 @@ var mouse = { x: 0, y: 0 };
 canvasShapes.addEventListener(
   "mousemove",
   function(e) {
+    console.log(e.pageX, this.offsetLeft);
     mouse.x = e.pageX - this.offsetLeft;
     mouse.y = e.pageY - this.offsetTop;
     // myCursor.style.left = (mouse.x + 68).toString() + "px";

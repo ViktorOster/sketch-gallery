@@ -15,9 +15,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.post('/save', function(req, res) {
-  console.log("saving drawing");
-  var drawing = req.body.value;
-  saveDrawing(drawing, res);
+  console.log("WTFFFFFF");
+  // var asd = req.body.value;
+  // console.log(asd);
+  // var drawingJson = {drawing: asd}
+  // saveDrawing(drawingJson, res);
   
 });
 app.post('/load', function(req, res) {
@@ -28,8 +30,8 @@ app.post('/load', function(req, res) {
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
 function saveDrawing(data, res) {
-  var asd = "drawing " + data;
-  var dataJson = JSON.parse(asd);
+  console.log("DATAAAA", data);
+  var dataJson = JSON.parse(data);
   console.log("DATA JSON", dataJson);
   
   fs.writeFile("public/drawings.json", dataJson, finished);

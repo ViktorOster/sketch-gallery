@@ -383,14 +383,12 @@ function loadImages() {
 function sendToServer(base64drawing)
 {
   console.log("calling server");
-  var data = {value: base64drawing}
-  console.log(data);
   
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("load", reqListener);
   xhr.open('POST', '/save', true);
   xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-  xhr.send(JSON.stringify(data));
+  xhr.send(base64drawing);
 
   function reqListener () {
     console.log("response from server");

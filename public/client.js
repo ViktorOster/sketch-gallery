@@ -28,9 +28,10 @@ var mouse = { x: 0, y: 0 };
 canvasShapes.addEventListener(
   "mousemove",
   function(e) {
-    console.log(e.pageX, this.offsetLeft);
+    
     mouse.x = e.pageX - this.offsetLeft;
     mouse.y = e.pageY - this.offsetTop;
+    console.log(mouse.x, e.pageX, this.offsetLeft);
     // myCursor.style.left = (mouse.x + 68).toString() + "px";
     // myCursor.style.top = (mouse.y + 30).toString() + "px";
     myCursor.style.left = e.pageX - 2 - ctx.lineWidth / 2 + "px";
@@ -355,5 +356,9 @@ function sendToServer(base64drawing)
 window.onresize = function(event) {
   console.log("resize");
   //let myImage = canvas.toDataURL("image/png");  
+  canvas.width = parseInt(paint_style.getPropertyValue("width"));
+  canvas.height = parseInt(paint_style.getPropertyValue("height"));
+  canvasShapes.width = canvas.width;
+  canvasShapes.height = canvas.height;
   
 };

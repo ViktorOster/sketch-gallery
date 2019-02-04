@@ -263,6 +263,7 @@ textarea {
 #draw-page {
   width:100vw;
   height:100vh;
+  position: fixed;
 }
 #drawings-page {
   width:100vw;

@@ -142,6 +142,7 @@ var mouseMoveListener = function() {
   }
 };
 
+
 document.addEventListener("mousemove", mouseMoveListener, false);
 
 canvasShapes.addEventListener(
@@ -178,6 +179,20 @@ canvasShapes.addEventListener(
   },
   false
 );
+var isTouching = false;
+canvasShapes.addEventListener("touchdown", function(e) {
+  isTouching= true;
+  console.log("touching");
+  if (chosenTool[1] == true || chosenTool[3] == true) {
+    console.log(e);
+//     ctx.beginPath();
+//     ctx.moveTo(mouse.x, mouse.y);
+//     ctxShapes.beginPath();
+//     ctxShapes.moveTo(mouse.x, mouse.y);
+
+//     canvasShapes.addEventListener("touchmove", onPaint, false);
+  }
+});
 
 canvasShapes.addEventListener(
   "mousedown",
@@ -281,9 +296,7 @@ buttonDraw.addEventListener("click", function() {
 });
 
 document.querySelector("#button-add-drawing").addEventListener("click", function() {
-  //save drawing and create div with drawing and add it to drawings page with addelement
-
-  putImage();
+ putImage();
 });
 
 let imagesData = [];

@@ -352,30 +352,22 @@ function loadImages() {
   xhr.send();
 
   function reqListener () {
-    //console.log("response from server", this.response);
 
     var root = document.getElementById("gallery");
-    let obj = this.response;
+    let obj = JSON.parse(this.response);
     if(obj) {
-      console.log(typeof obj);
-      
-      
-      // for (var key in obj) {
-      //   console.log("Key: " + key);
-      //   console.log("Value: " + obj[key]);
-      // }
-      
-      
-          //  let img = document.createElement("img");
-          // img.style.width = "266px";
-          // img.style.height = "175px";
-          // img.style.background = "white";
-          // img.style.margin = "10px";
-          // img.style.border ="1px solid black";
-          // img.src = imgArr[i];
-          // gallery.appendChild(img);
-        
-      
+      for (var key in obj) {
+        var imgData = obj[key].toString();
+        let img = document.createElement("img");
+        img.style.width = "266px";
+        img.style.height = "175px";
+        img.style.background = "white";
+        img.style.margin = "10px";
+        img.style.border ="1px solid black";
+        console.log("IMAGEDATA", imgData);
+        img.src = imgData;
+        gallery.appendChild(img);
+      }
     }
     
   }
@@ -391,21 +383,23 @@ function sendToServer(base64drawing)
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhr.send(base64drawing);
   function reqListener () {
-    console.log("response from server", this.response);
-    //console.log(this.response);
+    //console.log("response from server", this.response);
     var root = document.getElementById("gallery");
-    
-//     let img = document.createElement("img");
-//     img.style.width = "266px";
-//     img.style.height = "175px";
-//     img.style.background = "white";
-//     img.style.margin = "10px";
-//     img.style.border ="1px solid black";
-//     img.src = res[key];
-
-
-//     gallery.appendChild(img);
-    
-  }
-    
+    //let obj = JSON.parse(this.response);
+    console.log("RESPONSE", this.response);
+    let obj = false;
+    if(obj) {
+      for (var key in obj) {
+        var imgData = obj[key];
+        let img = document.createElement("img");
+        img.style.width = "266px";
+        img.style.height = "175px";
+        img.style.background = "white";
+        img.style.margin = "10px";
+        img.style.border ="1px solid black";
+        img.src = imgData;
+        gallery.appendChild(img);
+      }
+    }
+  } 
 }

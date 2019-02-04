@@ -41,7 +41,10 @@ function saveDrawing(dataToSave, res) {
   fs.writeFile("public/drawings.json", json, finished);
   function finished() {
     console.log("saved to file");
+    let data = getDrawings();
+    res.json(data);
   }
+  
 }
 //getDrawings();
 function getDrawings() { 

@@ -367,26 +367,35 @@ function sendToServer(base64drawing)
     var root = document.getElementById("gallery");
     
     var res = JSON.parse(this.response);
+    console.log("RESPONSE", res);
+    Object.keys(res).forEach(function(key) {
+
+    let img = document.createElement("img");
+    img.style.width = "266px";
+    img.style.height = "175px";
+    img.style.background = "white";
+    img.style.margin = "10px";
+    img.style.border ="1px solid black";
+    img.src = res[key];
+
+
+    gallery.appendChild(img);
+
+    });
+ 
+//     let img = document.createElement("img");
+//     img.style.width = "266px";
+//     img.style.height = "175px";
+//     img.style.background = "white";
+//     img.style.margin = "10px";
+//     img.style.border ="1px solid black";
+//     console.log("ADD SRC", obj[prop]);
+//     img.src = obj[prop];
+
+
+//     gallery.appendChild(img);
+     
     
-    for (var key in res) {
-      // skip loop if the property is from prototype
-      if (!res.hasOwnProperty(key)) continue;
-
-      var obj = res[key];
-      for (var prop in obj) {
-        // skip loop if the property is from prototype
-        if(!obj.hasOwnProperty(prop)) continue;
-
-        let img = document.createElement("img");
-        img.style.width = "266px";
-        img.style.height = "175px";
-        img.style.background = "white";
-        img.style.margin = "10px";
-        img.style.border ="1px solid black";
-        img.src = obj[prop];
-        gallery.appendChild(img);
-      }
-    }
     
     
   }

@@ -16,7 +16,6 @@ app.use(bodyParser.json());
 
 app.post('/save', function(req, res) {
   console.log("saving drawing");
-  console.log("heres what i got", req.body.value);
   var drawing = req.body.value;
   saveDrawing(drawing, res);
   
@@ -24,14 +23,14 @@ app.post('/save', function(req, res) {
 app.post('/load', function(req, res) {
   console.log("get drawings");
   let data = getDrawings();
-  res.json(data);
+  if(data) res.json(data);
 });
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
 function saveDrawing(data, res) {
   var dataJson = {"drawing": data};
   dataJson = JSON.stringify(dataJson, null, 2);
-  fs.writeFile(".data/drawings.json", dataJson, finished);
+  fs.writeFile("public/drawings.json", dataJson, finished);
   function finished(err) {
     console.log("saved.");
     var drawings = getDrawings();
@@ -40,11 +39,13 @@ function saveDrawing(data, res) {
 }
 //getDrawings();
 function getDrawings() {
-  const data = fs.readFileSync("drawings.json");
+  const data = fs.readFileSync("public/drawings.json");
   if(data){
-  const words = JSON.parse(data);
-  console.log("got these drawings:", words);
-  return words;
+    const words = JSON.parse(data);
+    console.log("got these drawings:", words);
+
+    return words;
+  } else return null;
 }
 
 

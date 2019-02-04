@@ -353,24 +353,30 @@ function loadImages() {
 
   function reqListener () {
     console.log("response from server");
+    console.log(this.response);
+    
     var root = document.getElementById("gallery");
+    if(this.response) {
+      var res = JSON.parse(this.response);
+      var count = Object.keys(res).length;
+      console.log("nr of drawings", count);
+      console.log("RESPONSE", res);
+      Object.keys(res).forEach(function(key) {
+
+        let img = document.createElement("img");
+        img.style.width = "266px";
+        img.style.height = "175px";
+        img.style.background = "white";
+        img.style.margin = "10px";
+        img.style.border ="1px solid black";
+        img.src = res[key];
+
+
+        gallery.appendChild(img);
+
+      });
+    }
     
-    var res = JSON.parse(this.response);
-    console.log("RESPONSE", res);
-    Object.keys(res).forEach(function(key) {
-
-      let img = document.createElement("img");
-      img.style.width = "266px";
-      img.style.height = "175px";
-      img.style.background = "white";
-      img.style.margin = "10px";
-      img.style.border ="1px solid black";
-      img.src = res[key];
-
-
-      gallery.appendChild(img);
-    
-    });
   }
 }
 
@@ -382,12 +388,13 @@ function sendToServer(base64drawing)
   
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("load", reqListener);
-  xhr.open('POST', '/send', true);
+  xhr.open('POST', '/save', true);
   xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
   xhr.send(JSON.stringify(data));
 
   function reqListener () {
     console.log("response from server");
+    console.log(this.response);
     var root = document.getElementById("gallery");
     
     var res = JSON.parse(this.response);

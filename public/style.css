@@ -226,10 +226,22 @@ textarea {
 }
 #navbar {
   background:yellow;
+  height:30px;
+}
+#navbar > button {
+  margin-left:20vw;
+  height:100%;
+  padding:0 8px;
+  background:inherit;
+  border:none;
+}
+#navbar > button.selected {
+  background:white;
 }
 #draw-page {
   width:100vw;
   height:100vh;
+  background:white;
 }
 #drawings-page {
   width:100vw;
@@ -250,7 +262,7 @@ textarea {
 #gallery {
   width:100%vw;
   height:100vh;
-  background:green;
+  background:white;
 }
 
 @media screen and (max-width: 700px) {

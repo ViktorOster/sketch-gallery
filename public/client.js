@@ -310,14 +310,20 @@ var onPaint = function() {
 let drawingsPage = document.querySelector("#drawings-page");
 let drawPage = document.querySelector("#draw-page");
 let gallery = document.querySelector("#gallery");
+let buttonWall = document.querySelector("#button-wall");
+let buttonDraw = document.querySelector("#button-draw");
 
-document.querySelector("#button-wall").addEventListener("click", function() {
+buttonWall.addEventListener("click", function() {
   drawingsPage.style.display = "inline";
   drawPage.style.display ="none";
+  this.className = "selected";
+  buttonDraw.classList.remove("selected");
 });
-document.querySelector("#button-draw").addEventListener("click", function() {
+buttonDraw.addEventListener("click", function() {
   drawPage.style.display ="inline";
   drawingsPage.style.display ="none";
+  this.className = "selected";
+  buttonWall.classList.remove("selected");
 });
 
 document.querySelector("#button-add-drawing").addEventListener("click", function() {

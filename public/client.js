@@ -353,9 +353,8 @@ function sendToServer(base64drawing)
         let imgData = obj[key].data.toString();
         let img = document.createElement("img");
         let heightRatio = obj[key].width/obj[key].height;
-        let maxWidth = 300;
-        let maxHeight = 300;
-        let height = 300 * heightRatio;
+        let maxWidth = 150;
+        let height = maxWidth * heightRatio;
         img.style.width = maxWidth;
         img.style.height = height;
         img.style.background = "white";

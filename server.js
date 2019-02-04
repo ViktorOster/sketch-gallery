@@ -19,7 +19,7 @@ app.post('/save', function(req, res) {
   var dataDrawing = req.body.data;
   var drawingWidth = req.body.width;
   var drawingHeight = req.body.height;
-  console.log(req);
+  //console.log(req);
   saveDrawing(dataDrawing, drawingWidth, drawingHeight, res);
 });
 
@@ -38,10 +38,12 @@ function saveDrawing(dataToSave, width, height, res) {
     imgs = JSON.parse(data);
     index = Object.keys(imgs).length;
   } 
-    
-  imgs[index].data = dataToSave;
-  imgs[index].width = width;
-  imgs[index].height = height;
+  let tempObj = {
+    data: dataToSave,
+    width: width,
+    height: height
+  };
+  imgs[index] = tempObj;
   
   let json = JSON.stringify(imgs, null, 2);
   fs.writeFile("public/drawings.json", json, finished);

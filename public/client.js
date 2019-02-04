@@ -76,6 +76,9 @@ toolButtons.push(document.getElementById("box1"));
 toolButtons.push(document.getElementById("box2"));
 toolButtons.push(document.getElementById("box3"));
 toolButtons.push(document.getElementById("box4"));
+document.querySelector("#clear").addEventListener("click", function() {
+  
+});
 
 for (let x in toolButtons) {
   toolButtons[x].addEventListener("click", handleToolButtons);

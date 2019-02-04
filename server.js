@@ -27,28 +27,12 @@ app.post('/load', function(req, res) {
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
 function saveDrawing(dataToSave, res) {
-//   fs.readFile('public/drawings.json', 'utf8', function readFileCallback(err, data){
-//     if (err){
-//         console.log(err);
-//     } else {
-//     let obj = JSON.parse(data); //now it an object
-//     console.log("OBJECT", obj);
-//     obj["user1"].push(dataToSave);
-//     console.log("OBJECT", obj);
-//     let json = JSON.stringify(obj, null, 2); //convert it back to json
-//     fs.writeFile('public/drawings.json', json, 'utf8', done); // write it back 
-      
-//     function done() {
-//       console.log("wrote to file"); 
-//     }
-//   }});
   fs.readFile('public/drawings.txt', 'utf8', function readFileCallback(err, data){
     if (err){
         console.log(err);
     } else {
-    let arr = [];
-    console.log("read data", data);
-    arr.push(dataToSave);
+    let drawingsArr = data.split("\n");
+    drawingsArr.push(dataToSave);
     fs.writeFile('public/drawings.txt', arr, 'utf8', done); // write it back 
       
     function done() {
@@ -58,24 +42,11 @@ function saveDrawing(dataToSave, res) {
 }
 //getDrawings();
 function getDrawings() { 
-  const data = fs.readFileSync("public/drawings.txt");
-  
-  if(data.toString() !== ""){
-    console.log("raw data", data);
-    const words = JSON.parse(data);
-    console.log("got these drawings:", words);
-
-    return words;
+  var data = fs.readFileSync("public/drawings.txt", "utf8");
+  if(data){
+    let drawingsArr = data.split("\n");
+    return drawingsArr;
   } else return null;
-  
-//   const data = fs.readFileSync("public/drawings.json");
-  
-//   if(data.toString() !== ""){
-//     const words = JSON.parse(data);
-//     console.log("got these drawings:", words);
-
-//     return words;
-//   } else return null;
   
 }
 function makeId() {

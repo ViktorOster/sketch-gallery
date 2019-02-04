@@ -311,12 +311,15 @@ function loadImages() {
     var root = document.getElementById("gallery");
     let obj = JSON.parse(this.response);
     if(obj) {
-      for (var key in obj) {
-        var imgData = obj[key].data.toString();
+      for (let key in obj) {
+        let imgData = obj[key].data.toString();
         let img = document.createElement("img");
-        var aspectRatio 
-        img.style.width = obj[key].width;
-        img.style.height = obj[key].height;
+        let heightRatio = obj[key].width/obj[key].height;
+        let maxWidth = 300;
+        let maxHeight = 300;
+        let height = 300 * heightRatio;
+        img.style.width = maxWidth;
+        img.style.height = height;
         img.style.background = "white";
         img.style.margin = "10px";
         img.style.border ="1px solid black";
@@ -347,10 +350,14 @@ function sendToServer(base64drawing)
     let obj = JSON.parse(this.response);
     if(obj) {
       for (var key in obj) {
-        var imgData = obj[key];
+        let imgData = obj[key].data.toString();
         let img = document.createElement("img");
-        img.style.width = "366px";
-        img.style.height = "275px";
+        let heightRatio = obj[key].width/obj[key].height;
+        let maxWidth = 300;
+        let maxHeight = 300;
+        let height = 300 * heightRatio;
+        img.style.width = maxWidth;
+        img.style.height = height;
         img.style.background = "white";
         img.style.margin = "10px";
         img.style.border ="1px solid black";

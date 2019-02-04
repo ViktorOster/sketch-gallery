@@ -19,6 +19,7 @@ app.post('/save', function(req, res) {
   var dataDrawing = req.body.data;
   var drawingWidth = req.body.width;
   var drawingHeight = req.body.height;
+  console.log(req);
   saveDrawing(dataDrawing, drawingWidth, drawingHeight, res);
 });
 

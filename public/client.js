@@ -352,25 +352,25 @@ function loadImages() {
   xhr.send();
 
   function reqListener () {
-    console.log("response from server", this.response);
+    //console.log("response from server", this.response);
 
-    var root = document.getElementById("gallery");
-    if(this.response) {
-      var imgArr
-      
-//         let img = document.createElement("img");
-//         img.style.width = "266px";
-//         img.style.height = "175px";
-//         img.style.background = "white";
-//         img.style.margin = "10px";
-//         img.style.border ="1px solid black";
-//         img.src = res[key];
-
-
-//         gallery.appendChild(img);
-
-    
-    }
+    // var root = document.getElementById("gallery");
+    // if(this.response) {
+    //   var imgArr = this.response.split("\n");
+    //   for(let i in imgArr){
+    //     if(imgArr[i].length > 20) {
+    //       console.log(imgArr[i]);
+    //        let img = document.createElement("img");
+    //       img.style.width = "266px";
+    //       img.style.height = "175px";
+    //       img.style.background = "white";
+    //       img.style.margin = "10px";
+    //       img.style.border ="1px solid black";
+    //       img.src = imgArr[i];
+    //       gallery.appendChild(img);
+    //     }
+    //   }
+    // }
     
   }
 }

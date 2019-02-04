@@ -28,20 +28,11 @@ app.post('/load', function(req, res) {
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
 function saveDrawing(dataToSave, res) {
-  fs.open('public/drawings.txt', 'a', 666, function( err, data ) {
-   fs.write( data, dataToSave + "\n", null, 'utf8', function(){
-    fs.close(data, function(){
-     console.log('file is updated');
-    });
-   });
-  });
+  
 }
 //getDrawings();
 function getDrawings() { 
-  var data = fs.readFileSync("public/drawings.txt", "utf8");
-  if(data){
-    return data;
-  } else return null;
+
   
 }
 function makeId() {

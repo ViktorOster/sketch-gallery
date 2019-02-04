@@ -335,7 +335,6 @@ function putImage() {
   //save dataUrl in flat file system???
   let myImage = canvas.toDataURL("image/png");  
   imagesData.push(myImage);
-  console.log(myImage);
   sendToServer(myImage);
 }  
 
@@ -384,6 +383,10 @@ function sendToServer(base64drawing)
   function reqListener () {
     //console.log("response from server", this.response);
     var root = document.getElementById("gallery");
+    while (root.firstChild) {
+        root.removeChild(root.firstChild);
+    }
+    
     let obj = JSON.parse(this.response);
     if(obj) {
       for (var key in obj) {

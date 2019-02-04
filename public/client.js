@@ -349,3 +349,21 @@ function putImage() {
 window.onload = function () {
   //get the stored images from file and display them 
 }
+function sendToServer(base64drawing)
+{
+  console.log("calling server");
+  var xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", reqListener);
+  xhr.open('POST', '/', true);
+  xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+  xhr.send(base64drawing);
+
+  function reqListener () {
+    console.log("response from server");
+    console.log(this.response);
+    var root = document.getElementById("gallery");
+
+    var res = res.data;
+  }
+    
+}

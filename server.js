@@ -6,9 +6,11 @@ const express = require('express');
 const app = express();
 
 const fs = require("fs");
-
+//TODO: save hash in localstorage and use it to optionally filter drawings
 function saveDrawing(base64drawing) {
-  fs.writeFile(".data/drawings.json", base64drawing, finished);
+  var data = {drawing: base64drawing};
+  var data = JSON.stringify(base64drawing, null, 2);
+  fs.writeFile(".data/drawings.json", data, finished);
   function finished(err) {
     console.log("all set."); 
   }
@@ -19,6 +21,7 @@ function getDrawings() {
   const words = JSON.parse(data);
   console.log(words);
 }
+
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.

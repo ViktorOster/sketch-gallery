@@ -69,9 +69,9 @@ h3 {
   clear: both;
 }
 .button {
-  width: 100%;
-  height: 100%;
-  margin:0;
+  width:48px;
+ 
+  margin-left:20px;
   border: 1px solid #bbb;
   /* margin: 2px; */
   background-image: linear-gradient(
@@ -277,7 +277,9 @@ textarea {
 /*   width:80px;
   height:60px; */
   background:yellow;
-
+  margin:0;
+  margin-top:48px;
+  text-align:center;
 }
 
 
@@ -289,18 +291,26 @@ textarea {
 
 @media screen and (max-width: 700px) {
   #container-paint-tools {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    width:100vw;
+    grid-template-columns: 48px 48px 48px 48px 48px 48px;
+    grid-template-rows: 48px 48px;
     margin:0;
 
   }
-
+  .button {
+    margin:0; 
+  }
+  #button-add-drawing {
+    width:96px;
+    height:48px;
+    margin:0;
+    background:yellow;
+  }
 
   .slidecontainer {
     float: left;
     margin-left: 16px;
     text-align: center;
-    margin-top: 12px;
+    margin-top: 26px;
     /* float: left; */
     width: 166px; /* Width of the outside container */
   }
@@ -309,10 +319,16 @@ textarea {
   }
 }
 @media screen and (max-width: 600px) {
+  #navbar > span {
+    display:none; 
+  }
+  #navbar > button {
+    width:45vw;
+  }
   .slidecontainer {
     float: top;
     margin-left: 12px;
-    margin-top: 0;
+    margin-top:8px;
     clear: both;
   }
   #header {

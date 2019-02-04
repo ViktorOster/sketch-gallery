@@ -33,7 +33,7 @@ function saveDrawing(dataToSave, res) {
   let imgs = {};
   if(data.toString()) {
     imgs = JSON.parse(data);
-    let index = Object.keys(imgs).length;
+    index = Object.keys(imgs).length;
   } 
     
   imgs[index] = dataToSave;

@@ -354,23 +354,29 @@ function loadImages() {
   function reqListener () {
     //console.log("response from server", this.response);
 
-    // var root = document.getElementById("gallery");
-    // if(this.response) {
-    //   var imgArr = this.response.split("\n");
-    //   for(let i in imgArr){
-    //     if(imgArr[i].length > 20) {
-    //       console.log(imgArr[i]);
-    //        let img = document.createElement("img");
-    //       img.style.width = "266px";
-    //       img.style.height = "175px";
-    //       img.style.background = "white";
-    //       img.style.margin = "10px";
-    //       img.style.border ="1px solid black";
-    //       img.src = imgArr[i];
-    //       gallery.appendChild(img);
-    //     }
-    //   }
-    // }
+    var root = document.getElementById("gallery");
+    let obj = this.response;
+    if(obj) {
+      console.log(typeof obj);
+      
+      
+      // for (var key in obj) {
+      //   console.log("Key: " + key);
+      //   console.log("Value: " + obj[key]);
+      // }
+      
+      
+          //  let img = document.createElement("img");
+          // img.style.width = "266px";
+          // img.style.height = "175px";
+          // img.style.background = "white";
+          // img.style.margin = "10px";
+          // img.style.border ="1px solid black";
+          // img.src = imgArr[i];
+          // gallery.appendChild(img);
+        
+      
+    }
     
   }
 }

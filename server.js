@@ -5,9 +5,18 @@
 const express = require('express');
 const app = express();
 const fs = require("fs");
+const rp = require('request-promise');
+const bodyParser = require('body-parser');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.post('/', function(req, res) {
   console.log("saving drawing");
+  console.log("heres what i got", req.body.value);
   var drawing = req.body.value;
   saveDrawing(drawing, res);
   
@@ -23,7 +32,7 @@ function saveDrawing(data, res) {
     res.json(drawings);
   }
 }
-getDrawings();
+//getDrawings();
 function getDrawings() {
   const data = fs.readFileSync(".data/drawings.json");
   const words = JSON.parse(data);

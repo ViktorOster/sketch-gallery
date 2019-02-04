@@ -387,7 +387,6 @@ function sendToServer(base64drawing)
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("load", reqListener);
   xhr.open('POST', '/save', true);
-  xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
   xhr.send(base64drawing);
 
   function reqListener () {

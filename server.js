@@ -15,13 +15,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.post('/save', function(req, res) {
-  console.log("WTFFFFFF");
-  // var asd = req.body.value;
-  // console.log(asd);
-  // var drawingJson = {drawing: asd}
-  // saveDrawing(drawingJson, res);
-  
+  var data = req.body.value;
+  saveDrawing(data, res);
 });
+
 app.post('/load', function(req, res) {
   console.log("get drawings");
   let data = getDrawings();
@@ -29,32 +26,45 @@ app.post('/load', function(req, res) {
 });
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
-function saveDrawing(data, res) {
-  console.log("DATAAAA", data);
-  var dataJson = JSON.parse(data);
-  console.log("DATA JSON", dataJson);
-  
-  fs.writeFile("public/drawings.json", dataJson, finished);
-    
-  
-  function finished() {
-    console.log("saved"); 
-  }
-
+function saveDrawing(dataToSave, res) {
+  fs.readFile('public/drawings.json', 'utf8', function readFileCallback(err, data){
+    if (err){
+        console.log(err);
+    } else {
+    let obj = JSON.parse(data); //now it an object
+    console.log("OBJECT", obj);
+    obj["user1"].push(dataToSave);
+    console.log("OBJECT", obj);
+    let json = JSON.stringify(obj, null, 2); //convert it back to json
+    fs.writeFile('public/drawings.json', json, 'utf8', done); // write it back 
+      
+    function done() {
+      console.log("wrote to file"); 
+    }
+  }});
 }
 //getDrawings();
-function getDrawings() {
-  const data = fs.readFileSync("public/drawings.json");
-  console.log("DATA", data);
+function getDrawings() { 
+//   const data = fs.readFileSync("public/drawings.json");
   
-  if(data.toString() !== ""){
-    const words = JSON.parse(data);
-    console.log("got these drawings:", words);
+//   if(data.toString() !== ""){
+//     const words = JSON.parse(data);
+//     console.log("got these drawings:", words);
 
-    return words;
-  } else return null;
+//     return words;
+//   } else return null;
+  
+  return null;
 }
+function makeId() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
+  for (var i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+} 
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.

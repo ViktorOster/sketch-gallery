@@ -336,20 +336,44 @@ function putImage() {
   let myImage = canvas.toDataURL("image/png");  
   imagesData.push(myImage);
   console.log(myImage);
-  // let img = document.createElement("img");
-  // img.style.width = "266px";
-  // img.style.height = "175px";
-  // img.style.background = "white";
-  // img.style.margin = "10px";
-  // img.style.border ="1px solid black";
-  // img.src = myImage;
-  //gallery.appendChild(img);
   sendToServer(myImage);
 }  
 
 window.onload = function () {
   //get the stored images from file and display them 
+  loadImages();
 }
+
+function loadImages() {
+  
+  var xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", reqListener);
+  xhr.open('POST', '/load', true);
+  xhr.send();
+
+  function reqListener () {
+    console.log("response from server");
+    var root = document.getElementById("gallery");
+    
+    var res = JSON.parse(this.response);
+    console.log("RESPONSE", res);
+    Object.keys(res).forEach(function(key) {
+
+      let img = document.createElement("img");
+      img.style.width = "266px";
+      img.style.height = "175px";
+      img.style.background = "white";
+      img.style.margin = "10px";
+      img.style.border ="1px solid black";
+      img.src = res[key];
+
+
+      gallery.appendChild(img);
+    
+    });
+  }
+}
+
 function sendToServer(base64drawing)
 {
   console.log("calling server");
@@ -358,7 +382,7 @@ function sendToServer(base64drawing)
   
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("load", reqListener);
-  xhr.open('POST', '/', true);
+  xhr.open('POST', '/send', true);
   xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
   xhr.send(JSON.stringify(data));
 

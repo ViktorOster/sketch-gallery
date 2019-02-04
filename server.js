@@ -14,13 +14,17 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.post('/', function(req, res) {
+app.post('/save', function(req, res) {
   console.log("saving drawing");
   console.log("heres what i got", req.body.value);
   var drawing = req.body.value;
   saveDrawing(drawing, res);
   
-  
+});
+app.post('/load', function(req, res) {
+  console.log("get drawings");
+  let data = getDrawings();
+  res.json(data);
 });
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
@@ -36,7 +40,8 @@ function saveDrawing(data, res) {
 }
 //getDrawings();
 function getDrawings() {
-  const data = fs.readFileSync(".data/drawings.json");
+  const data = fs.readFileSync("drawings.json");
+  if(data){
   const words = JSON.parse(data);
   console.log("got these drawings:", words);
   return words;

@@ -336,13 +336,13 @@ function putImage() {
   let myImage = canvas.toDataURL("image/png");  
   imagesData.push(myImage);
   console.log(myImage);
-  let img = document.createElement("img");
-  img.style.width = "266px";
-  img.style.height = "175px";
-  img.style.background = "white";
-  img.style.margin = "10px";
-  img.style.border ="1px solid black";
-  img.src = myImage;
+  // let img = document.createElement("img");
+  // img.style.width = "266px";
+  // img.style.height = "175px";
+  // img.style.background = "white";
+  // img.style.margin = "10px";
+  // img.style.border ="1px solid black";
+  // img.src = myImage;
   //gallery.appendChild(img);
   sendToServer(myImage);
 }  
@@ -364,10 +364,31 @@ function sendToServer(base64drawing)
 
   function reqListener () {
     console.log("response from server");
-    console.log(this.response);
     var root = document.getElementById("gallery");
+    
+    var res = JSON.parse(this.response);
+    
+    for (var key in res) {
+      // skip loop if the property is from prototype
+      if (!res.hasOwnProperty(key)) continue;
 
-    var res = res.data;
+      var obj = res[key];
+      for (var prop in obj) {
+        // skip loop if the property is from prototype
+        if(!obj.hasOwnProperty(prop)) continue;
+
+        let img = document.createElement("img");
+        img.style.width = "266px";
+        img.style.height = "175px";
+        img.style.background = "white";
+        img.style.margin = "10px";
+        img.style.border ="1px solid black";
+        img.src = obj[prop];
+        gallery.appendChild(img);
+      }
+    }
+    
+    
   }
     
 }

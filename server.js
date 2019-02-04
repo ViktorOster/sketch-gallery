@@ -25,7 +25,9 @@ app.post('/', function(req, res) {
 
 //TODO: save hash in localstorage and use it to optionally filter drawings
 function saveDrawing(data, res) {
-  fs.writeFile(".data/drawings.json", data, finished);
+  var dataJson = {"drawing": data};
+  dataJson = JSON.stringify(dataJson, null, 2);
+  fs.writeFile(".data/drawings.json", dataJson, finished);
   function finished(err) {
     console.log("saved.");
     var drawings = getDrawings();
@@ -37,6 +39,7 @@ function getDrawings() {
   const data = fs.readFileSync(".data/drawings.json");
   const words = JSON.parse(data);
   console.log("got these drawings:", words);
+  return words;
 }
 
 

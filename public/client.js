@@ -17,10 +17,16 @@ var highlightColor = "#ffffff";
 
 var painting = document.getElementById("paint");
 var paint_style = getComputedStyle(painting);
-canvas.width = parseInt(paint_style.getPropertyValue("width"));
-canvas.height = parseInt(paint_style.getPropertyValue("height"));
-canvasShapes.width = canvas.width;
-canvasShapes.height = canvas.height;
+window.onload = function () {
+  paint_style = getComputedStyle(painting);
+  canvas.width = parseInt(paint_style.getPropertyValue("width"));
+  canvas.height = parseInt(paint_style.getPropertyValue("height"));
+  canvas.width = painting.getBoundingRectClient().width;
+  canvas.height = painting.getBoundingRectClient().height;
+  canvasShapes.width = canvas.width;
+  canvasShapes.height = canvas.height;
+}
+
 var myCursor = document.getElementById("cursor");
 
 var mouse = { x: 0, y: 0 };
@@ -50,7 +56,7 @@ canvasShapes.addEventListener(
     // console.log(this.offsetTop);
   
     myCursor.style.left = (e.pageX -2 - (ctx.lineWidth / 2) ) + "px";
-    myCursor.style.top = ((e.pageY + 4 -(ctx.lineWidth / 2) ) - this.offsetTop)+ "px"; //this is weird, because of fixed position
+    myCursor.style.top = (e.pageY -2 -(ctx.lineWidth / 2) ) + "px"; //this is weird, because of fixed position
 
     // myCursor.style.width = ctx.lineWidth + "px";
     // myCursor.style.height = ctx.lineWidth + "px";

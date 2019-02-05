@@ -412,7 +412,8 @@ function sendToServer(base64drawing)
     
     let obj = JSON.parse(this.response);
     if(obj) {
-      for (var key in obj) {
+      var size = Object.keys(obj).length;
+      for (let key=size-1; key >= 0; key--) {
         let imgData = obj[key].data.toString();
         let img = document.createElement("img");
         let heightRatio = obj[key].height/obj[key].width;
@@ -425,7 +426,6 @@ function sendToServer(base64drawing)
           width = maxSize;
           height = width * (obj[key].height/obj[key].width);
         }
-        console.log("then", height);
         img.classList.add('drawing');
         img.style.width = width + "px";
         img.style.height = height + "px";

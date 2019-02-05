@@ -32,6 +32,7 @@ h3 {
   text-align:left;
   padding-left:1vw;
   border:0;
+  border-bottom:1px solid #ddd;
 }
 .navButton:hover {
   cursor:pointer; 
@@ -184,11 +185,13 @@ textarea {
   position:absolute;
   display: grid;
   grid-template-columns: 25vw 37.5vw 37.5vw;
+  border-bottom:1px solid #ddd;
 }
 #navbar > span {
   padding-left: 2vw;
-  padding-top:1vh;
-  font-size:2.5vw;
+/*   padding-top:1vh; */
+  font-size:2.4vw;
+
 }
 #navbar > button {
   

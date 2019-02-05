@@ -25,7 +25,7 @@ h3 {
 }
 
 .main {
-  margin-top:7vh; 
+  margin-top:10vh; 
 }
 .navButton {
    font-size:2vh;
@@ -56,22 +56,22 @@ h3 {
 
 .button {
   border:1px solid #ccc;
-  background:blue;
+  background: linear-gradient(to bottom, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
 }
 .button:hover {
   cursor:pointer;
-  background:white;
+  background: linear-gradient(to bottom, rgba(225,255,255,1) 0%,rgba(225,255,255,1) 7%,rgba(225,255,255,1) 12%,rgba(253,255,255,1) 12%,rgba(230,248,253,1) 30%,rgba(200,238,251,1) 54%,rgba(190,228,248,1) 75%,rgba(177,216,245,1) 100%);
 }
 .button:focus {
   outline:none;
-  border:none;
+/*   border:none; */
 }
 .button:active {
   outline:none;
-  border:none;
+/*   border:none; */
 }
 .button.button-selected {
-  background: lightblue;
+  background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
 }
 /* Tooltip text */
 .button .tooltiptext {
@@ -182,7 +182,7 @@ textarea {
   top:0;
   margin:0;
   background:white;
-  height:7vh;
+  height:10vh;
   position:absolute;
   display: grid;
   grid-template-columns: 25vw 37.5vw 37.5vw;
@@ -196,7 +196,7 @@ textarea {
 
 }
 #navbar > button {
-  
+  font-size: 2vw;
   background:inherit;
   text-align:center;
 }
@@ -250,10 +250,7 @@ textarea {
   padding:10%;
   
 }
-#paint-tools #box1 > img{
-  width:60%;
-  height:60;
-}
+
 #drawings-page.hide {
   display:none; 
 }
@@ -291,6 +288,9 @@ textarea {
     grid-template-columns: 50vw 50vw;
     
   }
+  .main {
+    margin-top:7vh; 
+  }
   
 }
 @media screen and (orientation: portrait){
@@ -299,7 +299,11 @@ textarea {
   }
   #navbar {
     grid-template-columns: 50vw 50vw;
+    height:7vh;
     
+  }
+  .main {
+    margin-top:7vh; 
   }
   
 }

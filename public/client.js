@@ -71,6 +71,7 @@ canvasShapes.addEventListener(
   false
 );
 
+let colorButton = document.querySelector("#box5");
 ctx.lineWidth = paintSettings.lineWidth;
 ctxShapes.lineWidth = ctx.lineWidth;
 ctx.lineJoin = "round";
@@ -78,6 +79,7 @@ ctx.lineCap = "round";
 ctxShapes.lineJoin = "round";
 ctxShapes.lineCap = "round";
 var val = paintSettings.color;
+colorButton.style.backgroundColor = val;
 ctx.strokeStyle = val;
 ctxShapes.strokeStyle = val;
 
@@ -129,6 +131,7 @@ function watchColorPicker(event) {
   ctxShapes.strokeStyle = event.target.value;
   val = event.target.value;
   paintSettings.color = event.target.value;
+  colorButton.style.backgroundColor = event.target.value;
 }
 
 var mouseMoveListener = function() {

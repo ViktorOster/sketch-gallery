@@ -68,7 +68,7 @@ h3 {
 /*   border:none; */
 }
 .button.button-selected {
-  background:yellow;
+  background: lightblue;
 }
 /* Tooltip text */
 .button .tooltiptext {
@@ -129,7 +129,7 @@ h3 {
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
   transition: opacity 0.2s;
-  border-radius: 0;
+  border-radius: 20px;
 }
 
 /* Mouse-over effects */
@@ -239,7 +239,7 @@ textarea {
   justify-content:center;
 }
 #colorPicker {
-  opacity:0.4;
+  opacity:0;
   margin-top:-7vh;
   width:6vh;
   height:6vh;

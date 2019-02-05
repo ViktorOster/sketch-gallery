@@ -184,11 +184,11 @@ textarea {
   border-bottom:1px solid #ddd;
 }
 #navbar > h3 {
+  margin-top:1vh;
   padding-left: 2vw;
 /*   padding-top:1vh; */
   font-size:16pt;
   background:white;
-
 }
 #navbar > button {
   text-align: center;
@@ -278,7 +278,7 @@ textarea {
 }
 
 @media screen 
-  and (max-device-width: 600px){
+  and (max-device-width: 600px) and (orientation: portrait){
     #navbar > h3 {
     display:none;  
   }
@@ -330,15 +330,25 @@ textarea {
 }
 
 @media screen 
-  and (max-device-width: 1100px){
-    #navbar > h3 {
-    display:none;  
-  }
+  and (max-device-width: 1100px) and (orientation: landscape){
   #cursor {
     display:none;  
   }
-
+  .slider {
+    margin-top:3vh;  
+  }
+  .slider::-webkit-slider-thumb {
+    width: 5vh; 
+    height: 5vh; 
+  }
+  #draw-page {
+    grid-template-rows: 10vh 90vh;
+  }
   #navbar > button {
+    font-size:3vh;
+  }
+  #button-add-drawing {
+    width:80px;
     font-size:3vh;
   }
   .main#drawings-page {
@@ -350,15 +360,6 @@ textarea {
     padding: 20px 4vw;
   /*   font-size:4vh; */
     font-size:3.5vh;
-  }
-    
-  .slidecontainer {
-    grid-column: 1/2; 
-    margin-left:2vw;
-  }
-  #button-add-drawing {
-    grid-column: 2/3;
-    width:40%;
   }
 
   #draw-page-bottom {

@@ -26,18 +26,7 @@ h3 {
 }
 
 .main {
-  margin-top:10vh; 
-}
-.navButton {
-   font-size:2vh;
-  text-align:left;
-  padding-left:1vw;
-  border:0;
-  border-bottom:1px solid #ddd;
-}
-.navButton:hover {
-  cursor:pointer; 
-  color:orange;
+  margin-top:50px; 
 }
 
 #paint {
@@ -190,7 +179,7 @@ textarea {
   grid-template-columns: 30vw 10vw 10vw 50vw;
   border-bottom:1px solid #ddd;
 }
-#navbar > span {
+#navbar > h3 {
   padding-left: 2vw;
 /*   padding-top:1vh; */
   font-size:16pt;
@@ -198,9 +187,16 @@ textarea {
 
 }
 #navbar > button {
+  text-align: center;
+  padding-left:1vw;
+  border:0;
+  border-bottom:1px solid #ddd;
   font-size:14pt;
   background:inherit;
 
+}
+#navbar > button:hover {
+  color:orange;
 }
 
 #navbar > button.selected {
@@ -258,18 +254,16 @@ textarea {
 }
 .main#drawings-page {
   background: #f8f8f8;
-  margin-top:10vh;
+  margin-top:50px;
   width:100vw;
 /*   height:100vh; */
 /*   overflow-y: scroll;
   overflow-x: hidden; */
 }
 #drawings-page > h3 {
-  height:7vh;
-  text-align:center;
-  padding-left: 2vw;
-  padding-top:2vh;
-  font-size:4vh;
+  padding: 20px 2vw;
+/*   font-size:4vh; */
+  font-size: 14pt;
 }
 #gallery {
   display:block;
@@ -283,7 +277,7 @@ textarea {
   border:1px solid #ccc; 
 }
 @media screen and (max-width: 30em){
-  #navbar > span {
+  #navbar > h3 {
     display:none;  
   }
   #navbar {
@@ -296,7 +290,7 @@ textarea {
   
 }
 @media screen and (orientation: portrait){
-  #navbar > span {
+  #navbar > h3 {
     display:none;  
   }
   #navbar {

@@ -34,22 +34,12 @@ var paintSettings = {
 canvasShapes.addEventListener(
   "touchmove",
   function(e) {
+    e.preventDefault();
     touchPos.x = e.touches[0].clientX - this.getBoundingClientRect().left;
     touchPos.y = e.touches[0].clientY - this.getBoundingClientRect().top;
   },
   false
 );
-// document.addEventListener(
-//   "mousemove",
-//   function(e) {
-//     myCursor.style.left = e.pageX - 2 - ctx.lineWidth / 2 + "px";
-//     myCursor.style.top = e.pageY - 2 - ctx.lineWidth / 2 + "px";
-
-//     myCursor.style.width = ctx.lineWidth + "px";
-//     myCursor.style.height = ctx.lineWidth + "px";
-//   },
-//   false
-// );
 
 canvasShapes.addEventListener(
   "mousemove",
@@ -365,7 +355,7 @@ function loadImages() {
         let heightRatio = obj[key].height/obj[key].width;
         let maxWidth = 500;
         let height = maxWidth * heightRatio;
-        img.class = "drawing";
+        img.classList.add('drawing');
         img.style.width = maxWidth + "px";
         img.style.height = height + "px";
         img.style.background = "white";

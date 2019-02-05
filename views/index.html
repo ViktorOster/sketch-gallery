@@ -6,28 +6,31 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <div id="content">
-      <div id="navbar">
-      <span>The Sketchboard</span>
       
+    <div id="navbar">
+      <span>The Sketchboard</span>
+
       <button id="button-wall" class="selected">
         Gallery
       </button>
       <button id="button-draw">
         Draw
       </button>
-      
+
     </div>
-    <div id="drawings-page">
+
+
+    <div id="drawings-page" class="main">
       <h3>
         Here's what other people drew
       </h3>
       <div id="gallery">
-        
+
       </div>
     </div>
-    
-    <div id="draw-page" class="hide">
+
+    <div id="draw-page" class="main hide">
+      
       <div id="container-paint-tools">
         <div id="clear" class="button" tabindex="-1">
           <span class="tooltiptext">Clear Drawing</span>
@@ -53,15 +56,13 @@
           <span class="tooltiptext">Color Picker</span>
           <input id="colorPicker" type="color" value="#00ff00" />
         </div>
-        
+
         <button id="button-add-drawing" class="button">
           Post!
         </button>
       </div>
 
       <div class="slidecontainer">
-        <!-- <p>Brush size</p> -->
-
         <input
           type="range"
           min="1"
@@ -71,17 +72,15 @@
           id="myRange"
         />
       </div>
-  <!--     <button onclick="cUndo()">Undo</button>
-      <button onclick="cRedo()">Redo</button> -->
-      
-      
+
       <div id="paint">
         <canvas id="canvas" class="canvas"></canvas> <canvas id="canvasShapes" class="canvas"></canvas>
       </div>
       <div id="cursor"></div>
       
     </div>
-    </div>
+
+
     
     
     <script type="text/javascript" src="client.js"></script>

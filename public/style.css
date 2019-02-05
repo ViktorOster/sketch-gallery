@@ -11,6 +11,14 @@ body {
   font-family: sans-serif;
 } 
 
+h3 {
+  margin:0;
+  padding:0;
+  display:inline-block;
+}
+.main {
+  margin-top:5vh; 
+}
 
 #paint {
   background: white;
@@ -129,6 +137,8 @@ textarea {
   cursor: pointer;
 }
 #navbar {
+  height
+  position:fixed;
   display: grid;
   grid-template-columns: 33vw 33vw 33vw;
 }

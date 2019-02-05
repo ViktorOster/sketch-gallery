@@ -88,6 +88,7 @@ h3 {
   transition: opacity 0.3s;
 }
 #button-add-drawing {
+  grid-column: 3/4;
   margin: 1vh 0;
   width:25%;
   min-width: 25%;
@@ -111,15 +112,16 @@ h3 {
 .button:focus .tooltiptext {
   display: none;
 }
-
+.slidecontainer {
+  grid-column: 2/3; 
+}
 /* The slider itself */
 .slider {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
-  width: 80%; /* Full-width */
+  width: 60%; /* Full-width */
   height:2vh; /* Specified height */
   margin-top:2vh;
-  margin-left:2vw;
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -222,15 +224,15 @@ textarea {
 }
 #draw-page-top {
   display:grid;
-  grid-template-columns: 50vw 50vw;
+  grid-template-columns: 10vw 25vw 65vw;
 }
 #draw-page-bottom {
   display:grid;
-  grid-template-columns: 15vw 85vw;
+  grid-template-columns: 10vw 90vw;
 }
 #paint-tools {
  display:grid;
-  grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh;
+  grid-template-rows: 6vh 6vh 6vh 6vh 6vh 6vh;
   justify-content:center;
   
 }
@@ -240,7 +242,7 @@ textarea {
 }
 #paint-tools .button {
   display:inline-block;
-  max-width:10vh;
+  max-width:6vh;
   height:100%;
   cursor:pointer;
 }
@@ -299,7 +301,25 @@ textarea {
   /*   font-size:4vh; */
     font-size:3.5vh;
   }
-    
+  .slidecontainer {
+    grid-column: 2/3; 
+  }
+  #button-add-drawing {
+    grid-column: 3/4;
+  }
+  #draw-page-top {
+    display:grid;
+    grid-template-columns: 50vw 50vw;
+  }
+  #paint-tools {
+    grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh;
+  }
+  #paint-tools .button {
+    display:inline-block;
+    max-width:10vh;
+    height:100%;
+    cursor:pointer;
+  }
     
   .main {
     margin-top:7vh; 

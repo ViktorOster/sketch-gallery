@@ -34,6 +34,8 @@ h3 {
   display: block;
   float: left;
   overflow: hidden;
+  width:100%;
+  height:100%;
 /*   margin-bottom: 10vh;
   margin-right: 5vh; */
   z-index: 5;
@@ -286,7 +288,6 @@ textarea {
   #navbar {
     grid-template-columns: 50vw 50vw;
     max-height:7vh;
-    
   }
   #navbar > button {
     font-size:3vh;
@@ -311,11 +312,9 @@ textarea {
     width:40%;
   }
   #draw-page-top {
-    display:grid;
     grid-template-columns: 50vw 50vw;
   }
   #draw-page-bottom {
-    display:grid;
     grid-template-columns: 8vh 92vh;
   }
   #paint-tools {
@@ -327,6 +326,54 @@ textarea {
     
   .main {
     margin-top:7vh; 
+  } 
+}
+
+@media screen 
+  and (max-device-width: 1100px){
+    #navbar > h3 {
+    display:none;  
+  }
+  #cursor {
+    display:none;  
+  }
+
+  #navbar > button {
+    font-size:3vh;
+  }
+  .main#drawings-page {
+    background: #f8f8f8;
+    margin-top:7vh;
+    width:100vw;
+  }
+  #drawings-page > h3 {
+    padding: 20px 4vw;
+  /*   font-size:4vh; */
+    font-size:3.5vh;
   }
     
+  .slidecontainer {
+    grid-column: 1/2; 
+    margin-left:2vw;
+  }
+  #button-add-drawing {
+    grid-column: 2/3;
+    width:40%;
+  }
+
+  #draw-page-bottom {
+    display:grid;
+    grid-template-columns: 10vw 90vw;
+  }
+  
+  #paint-tools {
+    grid-template-rows: 8vh 8vh 8vh 8vh 8vh 8vh;
+  }
+  #paint-tools .button {
+    max-width:8vh;
+  }
+    
+  .main {
+    margin-top:7vh; 
+  } 
 }

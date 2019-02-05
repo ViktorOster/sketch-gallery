@@ -442,3 +442,6 @@ function sendToServer(base64drawing)
 window.onresize = function(event) {
   setCanvasSize();
 };
+window.addEventListener("orientationchange", function() {
+  setCanvasSize();
+});

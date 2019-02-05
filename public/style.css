@@ -51,7 +51,7 @@ h3 {
 .button {
   transition: all 0.3s;
   cursor:pointer;
-  border:1px solid #eee;
+  border:1px solid #444;
 }
 .button#clear:hover {
   background:red;
@@ -183,7 +183,7 @@ textarea {
   position:absolute;
   display: grid;
   grid-template-columns: 30vw 10vw 10vw 50vw;
-  border-bottom:1px solid #ddd;
+  border-bottom:2px solid #444;
 }
 #navbar > h3 {
   margin-top:1vh;
@@ -199,7 +199,7 @@ textarea {
   text-align: center;
 /*   padding-left:1vw; */
   border:0;
-  border:1px solid #ddd;
+  outline:1px solid #888;
   font-size:14pt;
   background:inherit;
 }
@@ -214,6 +214,7 @@ textarea {
 #navbar > button:focus {
 /*   border: none; */
   outline:none;
+  outline:1px solid #888;
 }
 #draw-page {
   height:93vh;

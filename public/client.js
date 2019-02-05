@@ -23,7 +23,7 @@ var myCursor = document.getElementById("cursor");
 var mouse = { x: 0, y: 0 };
 var touchPos = { x: 0, y: 0 };
 var paintSettings = {
-  color: "green",
+  color: "#00FF00",
   lineWidth: 10
   
 }

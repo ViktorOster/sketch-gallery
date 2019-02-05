@@ -12,6 +12,7 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 } 
 
 h3 {
@@ -91,12 +92,19 @@ h3 {
   transition: opacity 0.3s;
 }
 #button-add-drawing {
+  margin: 1vh 0;
   width:25%;
   min-width: 25%;
   max-width:40%;
   border-radius:1vw;
   background:yellow;
   font-size:2vh;
+  opacity:0.8;
+  transition: all 0.3s;
+}
+#button-add-drawing:hover {
+  border:0;
+  opacity:1;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
@@ -173,7 +181,7 @@ textarea {
   height:5vh;
   position:fixed;
   display: grid;
-  grid-template-columns: 33vw 33vw 33vw;
+  grid-template-columns: 25vw 37.5vw 37.5vw;
 }
 #navbar > span {
   padding-left: 2vw;
@@ -189,7 +197,7 @@ textarea {
 }
 
 #navbar > button.selected {
-  background:white;
+  background: #eee;
   border-left: 1px solid #ccc;
   border-top: 1px solid #ccc;
   border-right: 1px solid #ccc;
@@ -200,6 +208,7 @@ textarea {
   outline:none;
 }
 #draw-page {
+  background: #eee;
   height:95vh;
   overflow:hidden;
   position: fixed;
@@ -242,10 +251,12 @@ textarea {
   display:none; 
 }
 .main#drawings-page {
+  background: #eee;
   margin-top:5vh;
   width:100vw;
 /*   height:100vh; */
-  overflow-y: scroll;
+/*   overflow-y: scroll;
+  overflow-x: hidden; */
 }
 #drawings-page > h3 {
   height:5vh;

@@ -367,7 +367,8 @@ function loadImages() {
     var root = document.getElementById("gallery");
     let obj = JSON.parse(this.response);
     if(obj) {
-      for (let key in obj) {
+      var size = Object.keys(obj).length;
+      for (let key=size;key) {
         let imgData = obj[key].data.toString();
         let img = document.createElement("img");
         let heightRatio = obj[key].height/obj[key].width;
@@ -403,6 +404,7 @@ function sendToServer(base64drawing)
   xhr.setRequestHeader('Content-type', 'application/json');
   xhr.send(JSON.stringify({ data: base64drawing, width: canvas.width, height: canvas.height }));
   function reqListener () {
+    alert("Posted to gallery!");
     //console.log("response from server", this.response);
     var root = document.getElementById("gallery");
     while (root.firstChild) {

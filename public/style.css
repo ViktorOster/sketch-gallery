@@ -343,6 +343,14 @@ textarea {
   }
   #draw-page {
     grid-template-rows: 10vh 90vh;
+    margin-top:10vh;
+  }
+  #navbar {
+    max-height:10vh;
+    height:10vh;
+  }
+  #navbar > h3 {
+    margin-top: 2vh;
   }
   #navbar > button {
     font-size:3vh;

@@ -335,8 +335,10 @@ function putImage() {
 }  
 
 function setCanvasSize() {
-  canvas.width = parseInt(paint_style.getPropertyValue("width"));
-  canvas.height = parseInt(paint_style.getPropertyValue("height"));
+  canvas.width = painting.clientWidth;
+  canvas.height = painting.clientHeight;
+  // canvas.width = parseInt(paint_style.getPropertyValue("width"));
+  // canvas.height = parseInt(paint_style.getPropertyValue("height"));
   canvasShapes.width = canvas.width;
   canvasShapes.height = canvas.height;
   ctx.lineWidth = paintSettings.lineWidth;

@@ -11,7 +11,7 @@ body {
   width: 100vw;
   height: 100vh;
   font-family: sans-serif;
-  
+  font-size:2vh;
 } 
 
 h3 {
@@ -26,11 +26,12 @@ h3 {
 .main {
   margin-top:5vh; 
 }
-#button-wall {
-  
+.navButton {
+   font-size:2vh;
 }
-
-
+.navButton:hover {
+  cursor:pointer; 
+}
 
 #paint {
   background: white;
@@ -90,6 +91,8 @@ h3 {
   width:25%;
   min-width: 25%;
   max-width:40%;
+  border-radius:1vw;
+  background:yellow;
   
 }
 
@@ -160,25 +163,30 @@ textarea {
 }
 #navbar {
   margin:0;
-  background:white;
+  background:#ddd;
   height:5vh;
   position:fixed;
   display: grid;
   grid-template-columns: 33vw 33vw 33vw;
 }
 #navbar > button {
+  border:none;
   border-left: 1px solid #ccc;
   background:inherit;
   border-radius: none;
+  margin-top:1vh;
+  margin-left:1vw;
 }
 
 #navbar > button.selected {
-  border:none;
   background:white;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   border-radius: 10px 10px 0 0;
 }
 #navbar > button:focus {
-  border: none;
+/*   border: none; */
   outline:none;
 }
 #draw-page {

@@ -309,7 +309,7 @@ buttonWall.addEventListener("click", function() {
   // drawPage.style.display ="none";
   drawPage.className += " hide";
   drawingsPage.classList.remove("hide");
-  this.className = "selected";
+  this.className += " selected";
   buttonDraw.classList.remove("selected");
 });
 buttonDraw.addEventListener("click", function() {
@@ -317,7 +317,7 @@ buttonDraw.addEventListener("click", function() {
   // drawingsPage.style.display ="none";
   drawingsPage.className += " hide";
   drawPage.classList.remove("hide");
-  this.className = "selected";
+  this.className += " selected";
   buttonWall.classList.remove("selected");
   setCanvasSize();
 });

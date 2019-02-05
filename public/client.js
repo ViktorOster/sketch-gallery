@@ -371,10 +371,24 @@ function loadImages() {
         let imgData = obj[key].data.toString();
         let img = document.createElement("img");
         let heightRatio = obj[key].height/obj[key].width;
-        let maxWidth = 500;
-        let height = maxWidth * heightRatio;
+        let maxSize = 500;
+        let height, wi
+        //taller than wide
+        if(obj[key].height > obj[key].width) {
+          height = maxHeight;
+          
+        }
+        // let width = maxWidth;
+        // let maxHeight = maxWidth;
+        // let height = maxWidth * heightRatio;
+        // console.log("first", height);
+        // if(height > maxHeight) {
+        //   height = height * (maxHeight/height);
+        //   width = width * (maxHeight/height);
+        // }
+        console.log("then", height);
         img.classList.add('drawing');
-        img.style.width = maxWidth + "px";
+        img.style.width = width + "px";
         img.style.height = height + "px";
         img.style.background = "white";
         img.src = imgData;

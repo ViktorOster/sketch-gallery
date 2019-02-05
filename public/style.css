@@ -26,6 +26,11 @@ h3 {
 .main {
   margin-top:5vh; 
 }
+#button-wall {
+  
+}
+
+
 
 #paint {
   background: white;
@@ -35,7 +40,7 @@ h3 {
   z-index: 5;
 }
 #paint:hover {
-/*   cursor: none; */
+  cursor: none;
 }
 .canvas {
   position: absolute;
@@ -45,13 +50,19 @@ h3 {
   
 }
 .button:hover {
- 
+  cursor:pointer;
+  background:#eee;
+}
+.button:focus {
+  outline:none;
+  border:none;
 }
 .button:active {
-  
+  outline:none;
+  border:none;
 }
 .button.button-selected {
- 
+  background: lightblue;
 }
 /* Tooltip text */
 .button .tooltiptext {
@@ -96,13 +107,14 @@ h3 {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
   width: 80%; /* Full-width */
-  height:90%; /* Specified height */
+  height:2vh; /* Specified height */
+  margin-top:1vh;
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
   transition: opacity 0.2s;
-  border-radius: 20px;
+  border-radius: 0;
 }
 
 /* Mouse-over effects */
@@ -114,8 +126,8 @@ h3 {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width:10%; /* Set a specific slider handle width */
-  height:90%; /* Slider handle height */
+  width: 4vh; /* Set a specific slider handle width */
+  height: 4vh; /* Slider handle height */
   background: #4caf50; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
@@ -190,7 +202,7 @@ textarea {
 #paint-tools {
  display:grid;
   grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh;
-  justify-content:flex-end;
+  justify-content:center;
   
 }
 #colorPicker {

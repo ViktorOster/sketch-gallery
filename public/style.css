@@ -34,8 +34,8 @@ h3 {
   display: block;
   float: left;
   overflow: hidden;
-  margin-bottom: 10vh;
-  margin-right: 5vh;
+/*   margin-bottom: 10vh;
+  margin-right: 5vh; */
   z-index: 5;
 }
 #paint:hover {
@@ -90,9 +90,7 @@ h3 {
 #button-add-drawing {
   grid-column: 3/4;
   margin: 1vh 0;
-  width:25%;
-  min-width: 25%;
-  max-width:40%;
+  width:100px;
   border-radius:1vw;
   background:yellow;
   font-size:2vh;
@@ -119,7 +117,7 @@ h3 {
 .slider {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
-  width: 60%; /* Full-width */
+  width: 80%; /* Full-width */
   height:2vh; /* Specified height */
   margin-top:2vh;
   background: #d3d3d3; /* Grey background */
@@ -234,7 +232,6 @@ textarea {
  display:grid;
   grid-template-rows: 6vh 6vh 6vh 6vh 6vh 6vh;
   justify-content:center;
-  
 }
 #colorPicker {
   width:100%;
@@ -283,6 +280,9 @@ textarea {
     #navbar > h3 {
     display:none;  
   }
+  #cursor {
+    display:none;  
+  }
   #navbar {
     grid-template-columns: 50vw 50vw;
     max-height:7vh;
@@ -301,24 +301,28 @@ textarea {
   /*   font-size:4vh; */
     font-size:3.5vh;
   }
+    
   .slidecontainer {
-    grid-column: 2/3; 
+    grid-column: 1/2; 
+    margin-left:2vw;
   }
   #button-add-drawing {
-    grid-column: 3/4;
+    grid-column: 2/3;
+    width:40%;
   }
   #draw-page-top {
     display:grid;
     grid-template-columns: 50vw 50vw;
   }
+  #draw-page-bottom {
+    display:grid;
+    grid-template-columns: 8vh 92vh;
+  }
   #paint-tools {
-    grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh;
+    grid-template-rows: 8vh 8vh 8vh 8vh 8vh 8vh;
   }
   #paint-tools .button {
-    display:inline-block;
-    max-width:10vh;
-    height:100%;
-    cursor:pointer;
+    max-width:8vh;
   }
     
   .main {

@@ -76,6 +76,9 @@ h3 {
   transition: opacity 0.3s;
 }
 #button-add-drawing {
+  width:25%;
+  min-width: 25%;
+  max-width:40%;
   
 }
 
@@ -93,7 +96,7 @@ h3 {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
   width: 80%; /* Full-width */
-  height: 25px; /* Specified height */
+  height:90%; /* Specified height */
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -111,8 +114,8 @@ h3 {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
+  width:10%; /* Set a specific slider handle width */
+  height:90%; /* Slider handle height */
   background: #4caf50; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
@@ -182,7 +185,7 @@ textarea {
 }
 #draw-page-bottom {
   display:grid;
-  grid-template-columns: 10vw 90vw;
+  grid-template-columns: 15vw 85vw;
 }
 #paint-tools {
  display:grid;
@@ -216,4 +219,14 @@ textarea {
 }
 .drawing {
   border:1px solid black; 
+}
+@media only screen and (max-width: 600px) {
+  #navbar > span {
+    display:none;  
+  }
+  #navbar {
+    grid-template-columns: 50vw 50vw;
+    
+  }
+  
 }

@@ -196,7 +196,7 @@ textarea {
 
 }
 #navbar > button {
-  font-size: 2vw;
+  font-size: 3vh;
   background:inherit;
   text-align:center;
 }
@@ -256,18 +256,18 @@ textarea {
 }
 .main#drawings-page {
   background: #f8f8f8;
-  margin-top:7vh;
+  margin-top:10vh;
   width:100vw;
 /*   height:100vh; */
 /*   overflow-y: scroll;
   overflow-x: hidden; */
 }
 #drawings-page > h3 {
-  height:7vw;
+  height:7vh;
   text-align:center;
   padding-left: 2vw;
   padding-top:2vh;
-  font-size:3vw;
+  font-size:4vh;
 }
 #gallery {
   display:block;
@@ -301,6 +301,9 @@ textarea {
     grid-template-columns: 50vw 50vw;
     height:7vh;
     
+  }
+  .main#drawings-page {
+    margin-top:7vh; 
   }
   .main {
     margin-top:7vh; 

@@ -17,15 +17,6 @@ var highlightColor = "#ffffff";
 
 var painting = document.getElementById("paint");
 var paint_style = getComputedStyle(painting);
-window.onload = function () {
-  paint_style = getComputedStyle(painting);
-  canvas.width = parseInt(paint_style.getPropertyValue("width"));
-  canvas.height = parseInt(paint_style.getPropertyValue("height"));
-  canvas.width = painting.getBoundingRectClient().width;
-  canvas.height = painting.getBoundingRectClient().height;
-  canvasShapes.width = canvas.width;
-  canvasShapes.height = canvas.height;
-}
 
 var myCursor = document.getElementById("cursor");
 
@@ -80,13 +71,13 @@ canvasShapes.addEventListener(
   false
 );
 
-ctx.lineWidth = 10;
+ctx.lineWidth = paintSettings.lineWidth;
 ctxShapes.lineWidth = ctx.lineWidth;
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
 ctxShapes.lineJoin = "round";
 ctxShapes.lineCap = "round";
-var val = "#00ff00";
+var val = paintSettings.color;
 ctx.strokeStyle = val;
 ctxShapes.strokeStyle = val;
 
@@ -328,6 +319,7 @@ buttonDraw.addEventListener("click", function() {
   drawPage.classList.remove("hide");
   this.className = "selected";
   buttonWall.classList.remove("selected");
+  setCanvasSize();
 });
 
 document.querySelector("#button-add-drawing").addEventListener("click", function() {
@@ -341,6 +333,21 @@ function putImage() {
   imagesData.push(myImage);
   sendToServer(myImage);
 }  
+
+function setCanvasSize() {
+  canvas.width = parseInt(paint_style.getPropertyValue("width"));
+  canvas.height = parseInt(paint_style.getPropertyValue("height"));
+  canvasShapes.width = canvas.width;
+  canvasShapes.height = canvas.height;
+  ctx.lineWidth = paintSettings.lineWidth;
+  ctxShapes.lineWidth = ctx.lineWidth;
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
+  ctxShapes.lineJoin = "round";
+  ctxShapes.lineCap = "round";
+  ctx.strokeStyle = paintSettings.color;
+  ctxShapes.strokeStyle = ctx.strokeStyle;
+}
 
 window.onload = function () {
   //get the stored images from file and display them 
@@ -414,19 +421,5 @@ function sendToServer(base64drawing)
 }
 
 window.onresize = function(event) {
-  console.log("resize");
-  //let myImage = canvas.toDataURL("image/png");  
-  canvas.width = parseInt(paint_style.getPropertyValue("width"));
-  canvas.height = parseInt(paint_style.getPropertyValue("height"));
-  canvasShapes.width = canvas.width;
-  canvasShapes.height = canvas.height;
-  ctx.lineWidth = paintSettings.lineWidth;
-  ctxShapes.lineWidth = ctx.lineWidth;
-  ctx.lineJoin = "round";
-  ctx.lineCap = "round";
-  ctxShapes.lineJoin = "round";
-  ctxShapes.lineCap = "round";
-  ctx.strokeStyle = paintSettings.color;
-  ctxShapes.strokeStyle = ctx.strokeStyle;
-  
+  setCanvasSize();
 };

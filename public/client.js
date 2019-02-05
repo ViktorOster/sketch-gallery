@@ -328,7 +328,6 @@ document.querySelector("#button-add-drawing").addEventListener("click", function
 
 let imagesData = [];
 function putImage() {
-  //save dataUrl in flat file system???
   let myImage = canvas.toDataURL("image/png");  
   imagesData.push(myImage);
   sendToServer(myImage);

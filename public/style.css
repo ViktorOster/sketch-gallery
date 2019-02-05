@@ -186,6 +186,7 @@ textarea {
 #navbar > span {
   padding-left: 2vw;
   padding-top:1vh;
+  font-size:2.5vw;
 }
 #navbar > button {
   border:none;

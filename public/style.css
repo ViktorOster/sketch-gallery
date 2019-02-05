@@ -286,7 +286,9 @@ textarea {
   height:100vh;
   background:white;
 }
-
+.drawing {
+  border:1px solid black; 
+}
 @media screen and (max-width: 700px) {
   #container-paint-tools {
     grid-template-columns: 48px 48px 48px 48px 48px 48px;

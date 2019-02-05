@@ -143,6 +143,7 @@ function watchColorPicker(event) {
   val = event.target.value;
   paintSettings.color = event.target.value;
 }
+
 var mouseMoveListener = function() {
   // document.removeEventListener('mousemove', mouseMoveListener, false);
   if ((chosenTool[0] == true || chosenTool[2] == true) && isMouseHeld) {
@@ -163,8 +164,6 @@ var mouseMoveListener = function() {
     ctxShapes.strokeStyle = temp2;
   }
 };
-
-
 document.addEventListener("mousemove", mouseMoveListener, false);
 
 canvasShapes.addEventListener(
@@ -201,14 +200,15 @@ canvasShapes.addEventListener(
   },
   false
 );
+
 var isTouching = false;
 canvasShapes.addEventListener("touchstart", function(e) {
   isTouching= true;
   if (chosenTool[1] == true || chosenTool[3] == true) {
-    ctx.beginPath();
     ctx.moveTo(touchPos.x, touchPos.y);
-    ctxShapes.beginPath();
     ctxShapes.moveTo(touchPos.x, touchPos.y);
+    ctx.beginPath();
+    ctxShapes.beginPath();
 
     canvasShapes.addEventListener("touchmove", onPaintTouch, false);
   }
@@ -218,7 +218,6 @@ canvasShapes.addEventListener(
   "touchend",
   function() {
     canvasShapes.removeEventListener("touchmove", onPaintTouch, false);
-    //cPush();
   },
   false
 );
@@ -234,10 +233,10 @@ canvasShapes.addEventListener(
     }
 
     if (chosenTool[1] == true || chosenTool[3] == true) {
-      ctx.beginPath();
       ctx.moveTo(mouse.x, mouse.y);
-      ctxShapes.beginPath();
       ctxShapes.moveTo(mouse.x, mouse.y);
+      ctx.beginPath();
+      ctxShapes.beginPath();
 
       canvasShapes.addEventListener("mousemove", onPaint, false);
     }
@@ -366,11 +365,10 @@ function loadImages() {
         let heightRatio = obj[key].height/obj[key].width;
         let maxWidth = 500;
         let height = maxWidth * heightRatio;
+        img.class = "drawing";
         img.style.width = maxWidth + "px";
         img.style.height = height + "px";
         img.style.background = "white";
-        img.style.margin = "10px";
-        img.style.border ="1px solid black";
         img.src = imgData;
         gallery.appendChild(img);
       }

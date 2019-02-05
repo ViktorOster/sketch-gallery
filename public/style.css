@@ -31,9 +31,11 @@ h3 {
    font-size:2vh;
   text-align:left;
   padding-left:1vw;
+  border:0;
 }
 .navButton:hover {
   cursor:pointer; 
+  color:orange;
 }
 
 #paint {
@@ -189,21 +191,21 @@ textarea {
   font-size:2.5vw;
 }
 #navbar > button {
-  border:0;
+  
   background:inherit;
   text-align:center;
 }
 
 #navbar > button.selected {
   color:orange;
- 
+   background:#f8f8f8;
 }
 #navbar > button:focus {
 /*   border: none; */
   outline:none;
 }
 #draw-page {
-  background: #eee;
+  background: #f8f8f8;
   height:93vh;
   overflow:hidden;
   position: fixed;
@@ -246,7 +248,7 @@ textarea {
   display:none; 
 }
 .main#drawings-page {
-  background: #eee;
+  background: #f8f8f8;
   margin-top:7vh;
   width:100vw;
 /*   height:100vh; */
@@ -254,16 +256,17 @@ textarea {
   overflow-x: hidden; */
 }
 #drawings-page > h3 {
-  height:5vh;
+  height:7vw;
   text-align:center;
   padding-left: 2vw;
   padding-top:2vh;
+  font-size:3vw;
 }
 #gallery {
   display:block;
   overflow:auto;
   min-height:90vh;
-  background:#eee;
+  background:#f8f8f8;
 }
 .drawing {
   float:left; 

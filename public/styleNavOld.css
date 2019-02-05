@@ -177,8 +177,8 @@ textarea {
 #navbar {
   top:0;
   margin:0;
-  background:white;
-  height:7vh;
+  background:#ddd;
+  height:5vh;
   position:fixed;
   display: grid;
   grid-template-columns: 25vw 37.5vw 37.5vw;
@@ -189,14 +189,20 @@ textarea {
   font-size:2.5vw;
 }
 #navbar > button {
-  border:0;
+  border:none;
+  border-left: 1px solid #ccc;
   background:inherit;
- 
+  border-radius: 0;
+  margin-top:1vh;
+  margin-left:1vw;
 }
 
 #navbar > button.selected {
-  
- 
+  background: #eee;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-radius: 10px 10px 0 0;
 }
 #navbar > button:focus {
 /*   border: none; */
@@ -204,11 +210,11 @@ textarea {
 }
 #draw-page {
   background: #eee;
-  height:93vh;
+  height:95vh;
   overflow:hidden;
   position: fixed;
   display:grid;
-  grid-template-rows: 7vh 86vh;
+  grid-template-rows: 7vh 88vh;
 }
 #draw-page.hide {
   display:none; 
@@ -247,7 +253,7 @@ textarea {
 }
 .main#drawings-page {
   background: #eee;
-  margin-top:7vh;
+  margin-top:5vh;
   width:100vw;
 /*   height:100vh; */
 /*   overflow-y: scroll;

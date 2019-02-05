@@ -34,6 +34,8 @@ h3 {
   display: block;
   float: left;
   overflow: hidden;
+  margin-bottom: 10vh;
+  margin-right: 5vh;
   z-index: 5;
 }
 #paint:hover {
@@ -297,6 +299,7 @@ textarea {
   /*   font-size:4vh; */
     font-size:3.5vh;
   }
+    
     
   .main {
     margin-top:7vh; 

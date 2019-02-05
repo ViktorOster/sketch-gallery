@@ -9,6 +9,7 @@ body {
   width: 100vw;
   height: 100vh;
   font-family: sans-serif;
+  overflow:hidden;
 } 
 
 h3 {
@@ -16,6 +17,10 @@ h3 {
   padding:0;
   display:inline-block;
 }
+.hide {
+  display:none; 
+}
+
 .main {
   margin-top:5vh; 
 }
@@ -161,12 +166,13 @@ textarea {
 }
 #draw-page {
   height:95vh;
-  overflow-y:none;
-  overflow-x:none;
+  overflow:hidden;
   position: fixed;
   display:grid;
   grid-template-rows: 5vh 90vh;
-  
+}
+#draw-page.hide {
+  display:none; 
 }
 #draw-page-top {
   display:grid;
@@ -192,11 +198,14 @@ textarea {
   height:100%;
   
 }
-
-#drawings-page {
+#drawings-page.hide {
+  display:none; 
+}
+.main#drawings-page {
+  margin-top:5vh;
   width:100vw;
 /*   height:100vh; */
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
 .drawing {
   border:1px solid black; 

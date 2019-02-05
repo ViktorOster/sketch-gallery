@@ -308,14 +308,18 @@ let buttonWall = document.querySelector("#button-wall");
 let buttonDraw = document.querySelector("#button-draw");
 
 buttonWall.addEventListener("click", function() {
-  drawingsPage.style.display = "inline";
-  drawPage.style.display ="none";
+  // drawingsPage.style.display = "inline";
+  // drawPage.style.display ="none";
+  drawPage.className += " hide";
+  drawingsPage.classList.remove("hide");
   this.className = "selected";
   buttonDraw.classList.remove("selected");
 });
 buttonDraw.addEventListener("click", function() {
-  drawPage.style.display ="inline";
-  drawingsPage.style.display ="none";
+  // drawPage.style.display ="inline";
+  // drawingsPage.style.display ="none";
+  drawingsPage.className += " hide";
+  drawPage.classList.remove("hide");
   this.className = "selected";
   buttonWall.classList.remove("selected");
 });

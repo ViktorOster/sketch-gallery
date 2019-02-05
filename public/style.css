@@ -172,7 +172,7 @@ textarea {
   top:0;
   margin:0;
   background:white;
-  height:10vh;
+  height:7vh;
   max-height:50px;
   position:absolute;
   display: grid;
@@ -191,9 +191,9 @@ textarea {
   padding-left:1vw;
   border:0;
   border-bottom:1px solid #ddd;
+  border-left: 1px solid #ddd;
   font-size:14pt;
   background:inherit;
-
 }
 #navbar > button:hover {
   color:orange;
@@ -256,9 +256,6 @@ textarea {
   background: #f8f8f8;
   margin-top:50px;
   width:100vw;
-/*   height:100vh; */
-/*   overflow-y: scroll;
-  overflow-x: hidden; */
 }
 #drawings-page > h3 {
   padding: 20px 2vw;
@@ -278,41 +275,31 @@ textarea {
 }
 
 @media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 4) {
-    
-    
-
-}
-
-@media screen and (max-width: 30em){
-  #navbar > h3 {
+  and (max-device-width: 600px){
+    #navbar > h3 {
     display:none;  
   }
   #navbar {
     grid-template-columns: 50vw 50vw;
+    max-height:7vh;
     
   }
-  .main {
-    margin-top:7vh; 
-  }
-  
-}
-@media screen and (orientation: portrait){
-  #navbar > h3 {
-    display:none;  
-  }
-  #navbar {
-    grid-template-columns: 50vw 50vw;
-    height:7vh;
-    
+  #navbar > button {
+    font-size:3vh;
   }
   .main#drawings-page {
-    margin-top:7vh; 
+    background: #f8f8f8;
+    margin-top:7vh;
+    width:100vw;
   }
+  #drawings-page > h3 {
+    padding: 20px 4vw;
+  /*   font-size:4vh; */
+    font-size:3.5vh;
+  }
+    
   .main {
     margin-top:7vh; 
   }
-  
+    
 }

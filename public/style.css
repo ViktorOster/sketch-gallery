@@ -28,7 +28,7 @@ h3 {
   z-index: 5;
 }
 #paint:hover {
-  cursor: none;
+/*   cursor: none; */
 }
 .canvas {
   position: absolute;
@@ -160,11 +160,12 @@ textarea {
   outline:none;
 }
 #draw-page {
+  height:95vh;
   overflow-y:none;
   overflow-x:none;
   position: fixed;
   display:grid;
-  grid-template-rows: 5vh 95vh;
+  grid-template-rows: 5vh 90vh;
   
 }
 #draw-page-top {
@@ -177,12 +178,24 @@ textarea {
 }
 #paint-tools {
  display:grid;
-  grid-template-rows: 10vw 90vw;
+  grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh;
+  
+}
+#paint-tools .button {
+  display:inline-block;
+  width:100%;
+  height:100%;
+  cursor:pointer;
+}
+#paint-tools .button > img {
+  width:100%;
+  height:100%;
+  
 }
 
 #drawings-page {
   width:100vw;
-  height:100vh;
+/*   height:100vh; */
   overflow-y:scroll;
 }
 .drawing {

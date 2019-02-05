@@ -13,6 +13,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  background: #f8f8f8f8;
 } 
 
 h3 {
@@ -25,15 +26,7 @@ h3 {
 }
 
 .main {
-  margin-top:5vh; 
-}
-.navButton {
-   font-size:2vh;
-  text-align:left;
-  padding-left:1vw;
-}
-.navButton:hover {
-  cursor:pointer; 
+  margin-top:50px; 
 }
 
 #paint {
@@ -41,6 +34,10 @@ h3 {
   display: block;
   float: left;
   overflow: hidden;
+  width:100%;
+  height:100%;
+/*   margin-bottom: 10vh;
+  margin-right: 5vh; */
   z-index: 5;
 }
 #paint:hover {
@@ -53,21 +50,22 @@ h3 {
 
 .button {
   border:1px solid #ccc;
+  background: linear-gradient(to bottom, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
 }
 .button:hover {
   cursor:pointer;
-  background:#eee;
+  background: linear-gradient(to bottom, rgba(225,255,255,1) 0%,rgba(225,255,255,1) 7%,rgba(225,255,255,1) 12%,rgba(253,255,255,1) 12%,rgba(230,248,253,1) 30%,rgba(200,238,251,1) 54%,rgba(190,228,248,1) 75%,rgba(177,216,245,1) 100%);
 }
 .button:focus {
   outline:none;
-  border:none;
+/*   border:none; */
 }
 .button:active {
   outline:none;
-  border:none;
+/*   border:none; */
 }
 .button.button-selected {
-  background: lightblue;
+  background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
 }
 /* Tooltip text */
 .button .tooltiptext {
@@ -92,10 +90,9 @@ h3 {
   transition: opacity 0.3s;
 }
 #button-add-drawing {
+  grid-column: 3/4;
   margin: 1vh 0;
-  width:25%;
-  min-width: 25%;
-  max-width:40%;
+  width:100px;
   border-radius:1vw;
   background:yellow;
   font-size:2vh;
@@ -115,7 +112,9 @@ h3 {
 .button:focus .tooltiptext {
   display: none;
 }
-
+.slidecontainer {
+  grid-column: 2/3; 
+}
 /* The slider itself */
 .slider {
   -webkit-appearance: none; /* Override default CSS styles */
@@ -123,7 +122,6 @@ h3 {
   width: 80%; /* Full-width */
   height:2vh; /* Specified height */
   margin-top:2vh;
-  margin-left:2vw;
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -177,61 +175,66 @@ textarea {
 #navbar {
   top:0;
   margin:0;
-  background:#ddd;
-  height:5vh;
-  position:fixed;
+  background:white;
+  height:7vh;
+  max-height:50px;
+  position:absolute;
   display: grid;
-  grid-template-columns: 25vw 37.5vw 37.5vw;
+  grid-template-columns: 30vw 10vw 10vw 50vw;
+  border-bottom:1px solid #ddd;
 }
-#navbar > span {
+#navbar > h3 {
+  margin-top:1vh;
   padding-left: 2vw;
-  padding-top:1vh;
-  font-size:2.5vw;
+/*   padding-top:1vh; */
+  font-size:16pt;
+  background:white;
+  pointer-events:none;
 }
 #navbar > button {
-  border:none;
-  border-left: 1px solid #ccc;
+  cursor:pointer;
+  text-align: center;
+/*   padding-left:1vw; */
+  border:0;
+  border:1px solid #ddd;
+  font-size:14pt;
   background:inherit;
-  border-radius: 0;
-  margin-top:1vh;
-  margin-left:1vw;
+}
+#navbar > button:hover {
+  color:orange;
 }
 
 #navbar > button.selected {
-  background: #eee;
-  border-left: 1px solid #ccc;
-  border-top: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-radius: 10px 10px 0 0;
+  color:orange;
+/*    background:#f8f8f8; */
 }
 #navbar > button:focus {
 /*   border: none; */
   outline:none;
 }
 #draw-page {
-  background: #eee;
-  height:95vh;
+  background: #f8f8f8;
+  height:93vh;
   overflow:hidden;
   position: fixed;
   display:grid;
-  grid-template-rows: 7vh 88vh;
+  grid-template-rows: 7vh 86vh;
 }
 #draw-page.hide {
   display:none; 
 }
 #draw-page-top {
   display:grid;
-  grid-template-columns: 50vw 50vw;
+  grid-template-columns: 10vw 25vw 65vw;
 }
 #draw-page-bottom {
   display:grid;
-  grid-template-columns: 15vw 85vw;
+  grid-template-columns: 10vw 90vw;
 }
 #paint-tools {
  display:grid;
-  grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh;
+  grid-template-rows: 6vh 6vh 6vh 6vh 6vh 6vh;
   justify-content:center;
-  
 }
 #colorPicker {
   width:100%;
@@ -239,50 +242,148 @@ textarea {
 }
 #paint-tools .button {
   display:inline-block;
-  max-width:10vh;
+  max-width:6vh;
   height:100%;
   cursor:pointer;
 }
 #paint-tools .button > img {
-  width:100%;
-  height:100%;
+  width:80%;
+  height:80%;
+  padding:10%;
   
 }
+
 #drawings-page.hide {
   display:none; 
 }
 .main#drawings-page {
-  background: #eee;
-  margin-top:5vh;
+  background: #f8f8f8;
+  margin-top:50px;
   width:100vw;
-/*   height:100vh; */
-/*   overflow-y: scroll;
-  overflow-x: hidden; */
 }
 #drawings-page > h3 {
-  height:5vh;
-  text-align:center;
-  padding-left: 2vw;
-  padding-top:2vh;
+  padding: 20px 2vw;
+/*   font-size:4vh; */
+  font-size: 14pt;
 }
 #gallery {
   display:block;
   overflow:auto;
   min-height:90vh;
-  background:#eee;
+  background:#f8f8f8;
 }
 .drawing {
   float:left; 
   display:block;
   border:1px solid #ccc; 
 }
-@media only screen and (max-width: 600px) {
-  #navbar > span {
+
+@media screen 
+  and (max-device-width: 600px) and (orientation: portrait){
+    #navbar > h3 {
+    display:none;  
+  }
+  #cursor {
     display:none;  
   }
   #navbar {
     grid-template-columns: 50vw 50vw;
+    max-height:7vh;
+  }
+  #navbar > button {
+    font-size:3vh;
+  }
+  .main#drawings-page {
+    background: #f8f8f8;
+    margin-top:7vh;
+    width:100vw;
+  }
+  #drawings-page > h3 {
+    padding: 20px 4vw;
+  /*   font-size:4vh; */
+    font-size:3.5vh;
+  }
     
+  .slidecontainer {
+    grid-column: 1/2; 
+    margin-left:2vw;
+  }
+  #button-add-drawing {
+    grid-column: 2/3;
+    width:40%;
+  }
+  #draw-page-top {
+    grid-template-columns: 50vw 50vw;
+  }
+  #draw-page-bottom {
+    grid-template-columns: 8vh 92vh;
+  }
+  #paint-tools {
+    grid-template-rows: 8vh 8vh 8vh 8vh 8vh 8vh;
+  }
+  #paint-tools .button {
+    max-width:8vh;
+  }
+    
+  .main {
+    margin-top:7vh; 
+  } 
+}
+
+@media screen 
+  and (max-device-width: 1100px) and (orientation: landscape){
+  #cursor {
+    display:none;  
+  }
+  .slider {
+    margin-top:3vh;  
+  }
+  .slider::-webkit-slider-thumb {
+    width: 5vh; 
+    height: 5vh; 
+  }
+  #draw-page {
+    grid-template-rows: 10vh 90vh;
+    margin-top:10vh;
+  }
+  #navbar {
+    max-height:10vh;
+    height:10vh;
+  }
+  #navbar > h3 {
+    margin-top: 2vh;
+  }
+  #navbar > button {
+    font-size:3vh;
+  }
+  #button-add-drawing {
+    width:80px;
+    font-size:3vh;
+  }
+  .main#drawings-page {
+    background: #f8f8f8;
+    margin-top:7vh;
+    width:100vw;
+  }
+  #drawings-page > h3 {
+    padding: 20px 4vw;
+  /*   font-size:4vh; */
+    font-size:3.5vh;
+  }
+
+  #draw-page-bottom {
+    display:grid;
+    grid-template-columns: 10vw 90vw;
   }
   
+  #paint-tools {
+    grid-template-rows: 8vh 8vh 8vh 8vh 8vh 8vh;
+  }
+  #paint-tools .button {
+    max-width:8vh;
+  }
+    
+  .main {
+    margin-top:7vh; 
+  } 
 }

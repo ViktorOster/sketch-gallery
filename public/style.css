@@ -189,13 +189,14 @@ textarea {
 /*   padding-top:1vh; */
   font-size:16pt;
   background:white;
+  pointer-events:none;
 }
 #navbar > button {
+  cursor:pointer;
   text-align: center;
-  padding-left:1vw;
+/*   padding-left:1vw; */
   border:0;
-  border-bottom:1px solid #ddd;
-  border-left: 1px solid #ddd;
+  border:1px solid #ddd;
   font-size:14pt;
   background:inherit;
 }

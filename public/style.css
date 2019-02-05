@@ -124,7 +124,7 @@ h3 {
   width: 80%; /* Full-width */
   height:2vh; /* Specified height */
   margin-top:2vh;
-  background: #d3d3d3; /* Grey background */
+  background:black;
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
@@ -144,6 +144,8 @@ h3 {
   width: 4vh; /* Set a specific slider handle width */
   height: 4vh; /* Slider handle height */
   background: #4caf50; /* Green background */
+  background:white;
+  border:2px solid #444;
   cursor: pointer; /* Cursor on hover */
   border-radius:100%;
 }
@@ -251,6 +253,7 @@ textarea {
   max-width:6vh;
   height:100%;
   cursor:pointer;
+  border:1 px solid #444;
 }
 #paint-tools .button > img {
   width:80%;

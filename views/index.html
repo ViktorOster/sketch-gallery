@@ -31,54 +31,62 @@
 
     <div id="draw-page" class="main hide">
       
-      <div id="container-paint-tools">
-        <div id="clear" class="button" tabindex="-1">
-          <span class="tooltiptext">Clear Drawing</span>
-          <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficonfinder_icon-trash-b_211935.svg?1549312771343" alt="" />
-        </div>
-        <div id="box1" class="button" tabindex="-1">
-          <span class="tooltiptext">Rectangle Tool</span>
-          <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficon_shape_rectangle.png?1549202591955" alt="" />
-        </div>
-        <div id="box2" class="button" tabindex="-1">
-          <span class="tooltiptext">Brush Tool</span>
-          <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficon_brush.png?1549202591833" alt="" />
-        </div>
-        <div id="box3" class="button" tabindex="-1">
-          <span class="tooltiptext">Text Tool</span>
-          <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficon_font.png?1549202591817" alt="" />
-        </div>
-        <div id="box4" class="button" tabindex="-1">
-          <span class="tooltiptext">Eraser Tool</span>
-          <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficon_eraser.png?1549202591910" alt="" />
-        </div>
-        <div id="box5" class="button" tabindex="-1">
-          <span class="tooltiptext">Color Picker</span>
-          <input id="colorPicker" type="color" value="#00ff00" />
+      <div id="draw-page-top">
+        <div class="slidecontainer">
+          <input
+            type="range"
+            min="1"
+            max="50"
+            value="10"
+            class="slider"
+            id="myRange"
+          />
         </div>
 
         <button id="button-add-drawing" class="button">
           Post!
         </button>
       </div>
+      
+      <div id="draw-page-bottom">
+        
+        <div id="container-paint-tools">
+          <div id="clear" class="button" tabindex="-1">
+            <span class="tooltiptext">Clear Drawing</span>
+            <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficonfinder_icon-trash-b_211935.svg?1549312771343" alt="" />
+          </div>
+          <div id="box1" class="button" tabindex="-1">
+            <span class="tooltiptext">Rectangle Tool</span>
+            <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficon_shape_rectangle.png?1549202591955" alt="" />
+          </div>
+          <div id="box2" class="button" tabindex="-1">
+            <span class="tooltiptext">Brush Tool</span>
+            <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficon_brush.png?1549202591833" alt="" />
+          </div>
+          <div id="box3" class="button" tabindex="-1">
+            <span class="tooltiptext">Text Tool</span>
+            <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficon_font.png?1549202591817" alt="" />
+          </div>
+          <div id="box4" class="button" tabindex="-1">
+            <span class="tooltiptext">Eraser Tool</span>
+            <img src="https://cdn.glitch.com/7d2f95af-704e-4bf6-a612-5222271b592f%2Ficon_eraser.png?1549202591910" alt="" />
+          </div>
+          <div id="box5" class="button" tabindex="-1">
+            <span class="tooltiptext">Color Picker</span>
+            <input id="colorPicker" type="color" value="#00ff00" />
+          </div>
+        </div>
 
-      <div class="slidecontainer">
-        <input
-          type="range"
-          min="1"
-          max="50"
-          value="10"
-          class="slider"
-          id="myRange"
-        />
+        <div id="paint">
+          <canvas id="canvas" class="canvas"></canvas> <canvas id="canvasShapes" class="canvas"></canvas>
+        </div>
+        
+        
       </div>
-
-      <div id="paint">
-        <canvas id="canvas" class="canvas"></canvas> <canvas id="canvasShapes" class="canvas"></canvas>
-      </div>
-      <div id="cursor"></div>
       
     </div>
+    <div id="cursor"></div>
+      
 
 
     

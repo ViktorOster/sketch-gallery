@@ -34,8 +34,8 @@ var paintSettings = {
 canvasShapes.addEventListener(
   "touchmove",
   function(e) {
-    touchPos.x = e.touches[0].clientX - this.offsetLeft;
-    touchPos.y = e.touches[0].clientY - this.offsetTop;
+    touchPos.x = e.touches[0].clientX - this.getBoundingClientRect().left;
+    touchPos.y = e.touches[0].clientY - this.getBoundingClientRect().top;
   },
   false
 );
@@ -43,12 +43,15 @@ canvasShapes.addEventListener(
 canvasShapes.addEventListener(
   "mousemove",
   function(e) {
-    mouse.x = e.pageX - this.offsetLeft;
-    mouse.y = e.pageY - this.offsetTop;
-    // myCursor.style.left = (mouse.x + 68).toString() + "px";
-    // myCursor.style.top = (mouse.y + 30).toString() + "px";
-    myCursor.style.left = e.pageX - 2 - ctx.lineWidth / 2 + "px";
-    myCursor.style.top = e.pageY - 2 - ctx.lineWidth / 2 + "px";
+    mouse.x = e.pageX - this.getBoundingClientRect().left;
+    mouse.y = e.pageY - this.getBoundingClientRect().top;
+    // console.log(this.getBoundingClientRect().top);
+    // console.log(this.offsetTop);
+    
+    console.log(e.pageX, e.pageY);
+  
+    // myCursor.style.left = e.pageX - 2 - ctx.lineWidth / 2 + "px";
+    // myCursor.style.top = e.pageY - 2 - ctx.lineWidth / 2 + "px";
 
     myCursor.style.width = ctx.lineWidth + "px";
     myCursor.style.height = ctx.lineWidth + "px";

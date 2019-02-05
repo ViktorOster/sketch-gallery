@@ -27,6 +27,7 @@ h3 {
 }
 
 #paint {
+  
   background: white;
   /* float:right; */
   height: 80vh;
@@ -40,7 +41,7 @@ h3 {
   z-index: 5;
 }
 #paint:hover {
-  cursor: none;
+/*   cursor: none; */
 }
 .canvas {
   position: absolute;

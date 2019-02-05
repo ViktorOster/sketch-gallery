@@ -373,22 +373,13 @@ function loadImages() {
         let heightRatio = obj[key].height/obj[key].width;
         let maxSize = 500;
         let height, width = 0;
-        //taller than wide
-        if(obj[key].height > obj[key].width) {
+        if(obj[key].height > obj[key].width) { //taller than wide
           height = maxSize;
           width = height * (obj[key].width/obj[key].height);
         } else { //wider than tall or square
           width = maxSize;
           height = width * (obj[key].height/obj[key].width);
         }
-        // let width = maxWidth;
-        // let maxHeight = maxWidth;
-        // let height = maxWidth * heightRatio;
-        // console.log("first", height);
-        // if(height > maxHeight) {
-        //   height = height * (maxHeight/height);
-        //   width = width * (maxHeight/height);
-        // }
         console.log("then", height);
         img.classList.add('drawing');
         img.style.width = width + "px";
@@ -424,13 +415,20 @@ function sendToServer(base64drawing)
         let imgData = obj[key].data.toString();
         let img = document.createElement("img");
         let heightRatio = obj[key].height/obj[key].width;
-        let maxWidth = 500;
-        let height = maxWidth * heightRatio;
-        img.style.width = maxWidth + "px";
+        let maxSize = 500;
+        let height, width = 0;
+        if(obj[key].height > obj[key].width) { //taller than wide
+          height = maxSize;
+          width = height * (obj[key].width/obj[key].height);
+        } else { //wider than tall or square
+          width = maxSize;
+          height = width * (obj[key].height/obj[key].width);
+        }
+        console.log("then", height);
+        img.classList.add('drawing');
+        img.style.width = width + "px";
         img.style.height = height + "px";
         img.style.background = "white";
-        img.style.margin = "10px";
-        img.style.border ="1px solid black";
         img.src = imgData;
         gallery.appendChild(img);
       }

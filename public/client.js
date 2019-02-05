@@ -354,6 +354,7 @@ window.onload = function () {
   // alert(window.innerWidth);
   //get the stored images from file and display them 
   loadImages();
+  setCanvasSize();
   
 }
 

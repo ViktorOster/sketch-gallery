@@ -239,9 +239,11 @@ textarea {
   justify-content:center;
 }
 #colorPicker {
-  width:100%;
-  height:100%;
-  visiblity:hidden;
+  opacity:0.4;
+  margin-top:-7vh;
+  width:6vh;
+  height:6vh;
+  position:absolute;
 }
 #paint-tools .button {
   display:inline-block;
@@ -325,6 +327,11 @@ textarea {
   #paint-tools .button {
     max-width:8vh;
   }
+  #colorPicker {
+    margin-top:-9vh;
+    width:7.5vh;
+    height:8vh;
+  }
     
   .main {
     margin-top:7vh; 
@@ -371,7 +378,6 @@ textarea {
   /*   font-size:4vh; */
     font-size:3.5vh;
   }
-
   #draw-page-bottom {
     display:grid;
     grid-template-columns: 10vw 90vw;
@@ -382,6 +388,11 @@ textarea {
   }
   #paint-tools .button {
     max-width:8vh;
+  }
+  #colorPicker {
+    margin-top:-9vh;
+    width:7.5vh;
+    height:8vh;
   }
     
   .main {

@@ -265,8 +265,14 @@ textarea {
   padding-left: 2vw;
   padding-top:2vh;
 }
+#gallery {
+  height:100%;
+  background:#eee;
+}
 .drawing {
-  border:1px solid black; 
+  float:left; 
+  display:block;
+  border:1px solid #ccc; 
 }
 @media only screen and (max-width: 600px) {
   #navbar > span {

@@ -372,11 +372,14 @@ function loadImages() {
         let img = document.createElement("img");
         let heightRatio = obj[key].height/obj[key].width;
         let maxSize = 500;
-        let height, wi
+        let height, width = 0;
         //taller than wide
         if(obj[key].height > obj[key].width) {
-          height = maxHeight;
-          
+          height = maxSize;
+          width = height * (obj[key].width/obj[key].height);
+        } else { //wider than tall or square
+          width = maxSize;
+          height = width * (obj[key].height/obj[key].width);
         }
         // let width = maxWidth;
         // let maxHeight = maxWidth;

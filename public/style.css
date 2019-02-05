@@ -276,6 +276,16 @@ textarea {
   display:block;
   border:1px solid #ccc; 
 }
+
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 4) {
+    
+    
+
+}
+
 @media screen and (max-width: 30em){
   #navbar > h3 {
     display:none;  

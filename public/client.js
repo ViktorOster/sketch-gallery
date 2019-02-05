@@ -39,6 +39,17 @@ canvasShapes.addEventListener(
   },
   false
 );
+// document.addEventListener(
+//   "mousemove",
+//   function(e) {
+//     myCursor.style.left = e.pageX - 2 - ctx.lineWidth / 2 + "px";
+//     myCursor.style.top = e.pageY - 2 - ctx.lineWidth / 2 + "px";
+
+//     myCursor.style.width = ctx.lineWidth + "px";
+//     myCursor.style.height = ctx.lineWidth + "px";
+//   },
+//   false
+// );
 
 canvasShapes.addEventListener(
   "mousemove",
@@ -47,12 +58,12 @@ canvasShapes.addEventListener(
     mouse.y = e.pageY - this.getBoundingClientRect().top;
     // console.log(this.getBoundingClientRect().top);
     // console.log(this.offsetTop);
-    
-    console.log(e.pageX, e.pageY);
   
-    // myCursor.style.left = e.pageX - 2 - ctx.lineWidth / 2 + "px";
-    // myCursor.style.top = e.pageY - 2 - ctx.lineWidth / 2 + "px";
+    myCursor.style.left = (e.pageX -2 - (ctx.lineWidth / 2) ) + "px";
+    myCursor.style.top = ((e.pageY + 4 -(ctx.lineWidth / 2) ) - this.offsetTop)+ "px"; //this is weird, because of fixed position
 
+    // myCursor.style.width = ctx.lineWidth + "px";
+    // myCursor.style.height = ctx.lineWidth + "px";
     myCursor.style.width = ctx.lineWidth + "px";
     myCursor.style.height = ctx.lineWidth + "px";
   },

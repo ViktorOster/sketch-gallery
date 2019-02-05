@@ -13,7 +13,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
-  background: #f8f8f8f8;
+  background: #fff;
 } 
 
 h3 {
@@ -49,12 +49,15 @@ h3 {
 }
 
 .button {
-  border:1px solid #ccc;
-  background: linear-gradient(to bottom, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
+  transition: all 0.3s;
+  cursor:pointer;
+  border:1px solid #ddd;
+}
+.button#clear:hover {
+  background:red;
 }
 .button:hover {
-  cursor:pointer;
-  background: linear-gradient(to bottom, rgba(225,255,255,1) 0%,rgba(225,255,255,1) 7%,rgba(225,255,255,1) 12%,rgba(253,255,255,1) 12%,rgba(230,248,253,1) 30%,rgba(200,238,251,1) 54%,rgba(190,228,248,1) 75%,rgba(177,216,245,1) 100%);
+  background:#eee;
 }
 .button:focus {
   outline:none;
@@ -65,7 +68,7 @@ h3 {
 /*   border:none; */
 }
 .button.button-selected {
-  background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
+  background:yellow;
 }
 /* Tooltip text */
 .button .tooltiptext {
@@ -96,7 +99,6 @@ h3 {
   border-radius:1vw;
   background:yellow;
   font-size:2vh;
-  opacity:0.8;
   transition: all 0.3s;
 }
 #button-add-drawing:hover {
@@ -213,7 +215,6 @@ textarea {
   outline:none;
 }
 #draw-page {
-  background: #f8f8f8;
   height:93vh;
   overflow:hidden;
   position: fixed;
@@ -257,7 +258,6 @@ textarea {
   display:none; 
 }
 .main#drawings-page {
-  background: #f8f8f8;
   margin-top:50px;
   width:100vw;
 }
@@ -270,7 +270,6 @@ textarea {
   display:block;
   overflow:auto;
   min-height:90vh;
-  background:#f8f8f8;
 }
 .drawing {
   float:left; 

@@ -24,6 +24,7 @@ canvasShapes.height = canvas.height;
 var myCursor = document.getElementById("cursor");
 
 var mouse = { x: 0, y: 0 };
+var touchPos = { x: 0, y: 0 };
 var paintSettings = {
   color: "green",
   lineWidth: 10
@@ -31,12 +32,19 @@ var paintSettings = {
 }
 
 canvasShapes.addEventListener(
+  "touchmove",
+  function(e) {
+    touchPos.x = e.touches[0].clientX - this.offsetLeft;
+    touchPos.y = e.touches[0].clientY - this.offsetTop;
+  },
+  false
+);
+
+canvasShapes.addEventListener(
   "mousemove",
   function(e) {
-    
     mouse.x = e.pageX - this.offsetLeft;
     mouse.y = e.pageY - this.offsetTop;
-    console.log(mouse.x, e.pageX, this.offsetLeft);
     // myCursor.style.left = (mouse.x + 68).toString() + "px";
     // myCursor.style.top = (mouse.y + 30).toString() + "px";
     myCursor.style.left = e.pageX - 2 - ctx.lineWidth / 2 + "px";
@@ -180,19 +188,26 @@ canvasShapes.addEventListener(
   false
 );
 var isTouching = false;
-canvasShapes.addEventListener("touchdown", function(e) {
+canvasShapes.addEventListener("touchstart", function(e) {
   isTouching= true;
-  console.log("touching");
   if (chosenTool[1] == true || chosenTool[3] == true) {
-    console.log(e);
-//     ctx.beginPath();
-//     ctx.moveTo(mouse.x, mouse.y);
-//     ctxShapes.beginPath();
-//     ctxShapes.moveTo(mouse.x, mouse.y);
+    ctx.beginPath();
+    ctx.moveTo(touchPos.x, touchPos.y);
+    ctxShapes.beginPath();
+    ctxShapes.moveTo(touchPos.x, touchPos.y);
 
-//     canvasShapes.addEventListener("touchmove", onPaint, false);
+    canvasShapes.addEventListener("touchmove", onPaintTouch, false);
   }
 });
+
+canvasShapes.addEventListener(
+  "touchend",
+  function() {
+    canvasShapes.removeEventListener("touchmove", onPaintTouch, false);
+    //cPush();
+  },
+  false
+);
 
 canvasShapes.addEventListener(
   "mousedown",
@@ -276,6 +291,13 @@ var onPaint = function() {
   ctxShapes.lineTo(mouse.x, mouse.y);
   ctxShapes.stroke();
 };
+var onPaintTouch = function() {
+  ctx.lineTo(touchPos.x, touchPos.y);
+  ctx.stroke();
+  ctxShapes.lineTo(touchPos.x, touchPos.y);
+  ctxShapes.stroke();
+};
+
 let drawingsPage = document.querySelector("#drawings-page");
 let drawPage = document.querySelector("#draw-page");
 let gallery = document.querySelector("#gallery");
